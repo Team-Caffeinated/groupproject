@@ -39,9 +39,7 @@ dependencies {
     testCompileOnly 'org.projectlombok:lombok:1.18.22'
     testAnnotationProcessor 'org.projectlombok:lombok:1.18.22'
 
-    //For log4j
-    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version '2.14.1'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core' version '2.14.1'
+
 }
 
 application {
@@ -67,5 +65,5 @@ jacocoTestReport{
 }
 jacoco{
     toolVersion = "0.8.7"
-    reportsDirectory = layout.buidDirectory.dir('customJacocoReportDir')
+    reportsDirectory = layout.buildDirectory.dir('customJacocoReportDir')
 }

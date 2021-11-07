@@ -6,6 +6,14 @@ package edu.isu.cs2263.acquire;
 public class App {
 
     public static void main(String[] args) {
-
+        Corporation Tower = new Corporation("Tower", 3,"Red");
+        Corporation Continental = new Corporation("Continental", 2,"Purple");
+        Corporation Sackson = new Corporation("Sackson", 0,"Yellow");
+        Corporation American = new Corporation("American", 0,"Green");
+        Corporation Festival = new Corporation("Festival", 0,"Blue");
+        Corporation Imperial = new Corporation("Imperial", 0,"Orange");
+        Corporation Worldwide = new Corporation("Worldwide", 0,"Teal");
+        
     }
+
 }
