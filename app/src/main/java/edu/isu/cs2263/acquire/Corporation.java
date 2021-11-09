@@ -1,16 +1,19 @@
 package edu.isu.cs2263.acquire;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Corporation {
     private String name;
     private Integer Size;
     private String color;
-    private List<Tiles> tiles;
+    private List<String> tiles;
 
     public Corporation(String name, Integer size, String Color) {
         this.name = name;
         Size = size;
         color = Color;
-        tiles = new ArrayList<Tiles>();
+        tiles = new ArrayList<String>();
     }
     public Corporation(){
 
@@ -53,8 +56,6 @@ public class Corporation {
             one.resetSize();
             two.increaseSize(onesize);
         }
-
-
     }
     public void resetSize(){
         Size = 0;
@@ -68,8 +69,19 @@ public class Corporation {
                 ", color='" + color + '\'' +
                 '}';
     }
-    public void add(Tiles tile){
+    public void addTile(String tile){
+
         tiles.add(tile);
+        increaseSize(1);
+    }
+
+    public static void main(String[] args) {
+        Corporation Tower = new Corporation("Tower", 3,"Red");
+        System.out.println(Tower.tiles);
+        Tile tile=new Tile();
+        Tower.addTile(tile.wholeTiles().get(0));
+        System.out.println(Tower.tiles);
+        System.out.println(Tower.getSize());
     }
 
 }
