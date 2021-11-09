@@ -1,14 +1,16 @@
 package edu.isu.cs2263.acquire;
 
 public class Corporation {
-    String name;
-    Integer Size;
-    String color;
+    private String name;
+    private Integer Size;
+    private String color;
+    private List<Tiles> tiles;
 
     public Corporation(String name, Integer size, String Color) {
         this.name = name;
         Size = size;
         color = Color;
+        tiles = new ArrayList<Tiles>();
     }
     public Corporation(){
 
@@ -40,7 +42,7 @@ public class Corporation {
     public void increaseSize(Integer increase){
         Size = Size + increase;
     }
-    public void merge(Corporation one, Corporation two){
+    public static void merge(Corporation one, Corporation two){
         Integer onesize = one.getSize();
         Integer twosize = two.getSize();
         if (onesize > twosize){
@@ -66,4 +68,8 @@ public class Corporation {
                 ", color='" + color + '\'' +
                 '}';
     }
+    public void add(Tiles tile){
+        tiles.add(tile);
+    }
+
 }

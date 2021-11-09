@@ -3,6 +3,8 @@
  */
 package edu.isu.cs2263.acquire;
 
+
+
 public class App {
 
     public static void main(String[] args) {
@@ -13,6 +15,8 @@ public class App {
         Corporation Festival = new Corporation("Festival", 0,"Blue");
         Corporation Imperial = new Corporation("Imperial", 0,"Orange");
         Corporation Worldwide = new Corporation("Worldwide", 0,"Teal");
+
+
         
     }
 
