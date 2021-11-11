@@ -17,7 +17,7 @@ public class SaveManager {
     public static List<Corporation> loadCorpos() throws FileNotFoundException {
         Gson gson = new Gson();
         List<Corporation> corpoList = new ArrayList<>();
-        BufferedReader br = new BufferedReader(new FileReader("C:\\Users\\Brad\\Desktop\\Acquire\\groupproject\\CorporationSave.json"));
+        BufferedReader br = new BufferedReader(new FileReader("CorporationSave.json"));
         corpoList = Arrays.asList(gson.fromJson(br, Corporation[].class));
         return corpoList;
     }
