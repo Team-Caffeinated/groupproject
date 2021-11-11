@@ -1,5 +1,9 @@
 package edu.isu.cs2263.acquire;
 
+import com.google.gson.Gson;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,7 +79,32 @@ public class Corporation {
         increaseSize(1);
     }
 
-    public static void main(String[] args) {
+
+    public static void generateCorpos() throws IOException {
+        Corporation Tower = new Corporation("Tower", 0,"Red");
+        Corporation Continental = new Corporation("Continental", 0,"Purple");
+        Corporation Sackson = new Corporation("Sackson", 0,"Yellow");
+        Corporation American = new Corporation("American", 0,"Green");
+        Corporation Festival = new Corporation("Festival", 0,"Blue");
+        Corporation Imperial = new Corporation("Imperial", 0,"Orange");
+        Corporation Worldwide = new Corporation("Worldwide", 0,"Teal");
+        List<Corporation> corpos = new ArrayList<>();
+        corpos.add(Tower);
+        corpos.add(Continental);
+        corpos.add(Sackson);
+        corpos.add(American);
+        corpos.add(Festival);
+        corpos.add(Imperial);
+        corpos.add(Worldwide);
+        Gson gson = new Gson();
+        FileWriter fileWriter = new FileWriter("CorporationSave.json");
+        gson.toJson(corpos, fileWriter);
+        fileWriter.close();
+        System.out.println("JSON wrote to file");
+    }
+/*
+
+public static void main(String[] args) {
         Corporation Tower = new Corporation("Tower", 3,"Red");
         System.out.println(Tower.tiles);
         Tile tile=new Tile();
@@ -83,5 +112,5 @@ public class Corporation {
         System.out.println(Tower.tiles);
         System.out.println(Tower.getSize());
     }
-
+ */
 }
