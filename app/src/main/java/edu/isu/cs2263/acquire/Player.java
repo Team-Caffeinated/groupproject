@@ -11,6 +11,11 @@ public class Player {
     private List<String> hand;
     private boolean turn;
 
+    public Player(String name, int money) {
+        this.name = name;
+        this.money = money;
+    }
+
     //Getters and Setters
     public int getMoney() {
         return money;
