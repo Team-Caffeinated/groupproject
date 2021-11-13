@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import static edu.isu.cs2263.acquire.SaveManager.loadCorpos;
-import static edu.isu.cs2263.acquire.SaveManager.newGame;
+///import static edu.isu.cs2263.acquire.SaveManager.loadCorpos;
+////import static edu.isu.cs2263.acquire.SaveManager.newGame;
 
 public class Gameboard {
 
@@ -40,9 +40,9 @@ public class Gameboard {
 
     public static void main(String [] args) throws IOException {
         //Testing for Game start and loading corpos
-        newGame();
+        ////////newGame();
         Gameboard Game = new Gameboard();
-        Game.setCorpos(loadCorpos());
+        ////////Game.setCorpos(loadCorpos());
         System.out.println(Game.getCorpos());
 
         //Loads Tiles into deck
