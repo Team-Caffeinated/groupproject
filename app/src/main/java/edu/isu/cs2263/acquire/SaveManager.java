@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static edu.isu.cs2263.acquire.Corporation.generateCorpos;
+//import static edu.isu.cs2263.acquire.Corporation.generateCorpos;
 
 public class SaveManager {
 
@@ -21,9 +21,9 @@ public class SaveManager {
         corpoList = Arrays.asList(gson.fromJson(br, Corporation[].class));
         return corpoList;
     }
-    public static void newGame() throws IOException {
+   /* public static void newGame() throws IOException {
         generateCorpos();
-    }
+    }*/
 
 
 

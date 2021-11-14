@@ -17,6 +17,7 @@ public class Player {
     private List<String> hand;
     private boolean turn;
 
+<<<<<<< HEAD
     public int getTowerStock() {
         return towerStock;
     }
@@ -71,6 +72,11 @@ public class Player {
 
     public void setImperialStock(int imperialStock) {
         this.imperialStock = imperialStock;
+=======
+    public Player(String name, int money) {
+        this.name = name;
+        this.money = money;
+>>>>>>> 0a256b253724bbae6b7571dd01ee90f856dfd8d6
     }
 
     //Getters and Setters
