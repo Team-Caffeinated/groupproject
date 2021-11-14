@@ -7,9 +7,71 @@ public class Player {
     private String name;
     private int money;
     private int stockValue;
-    private List<String> stock;
+    private int towerStock;
+    private int saxonStock;
+    private int americanStock;
+    private int festivalStock;
+    private int worldwideStock;
+    private int continentalStock;
+    private int imperialStock;
     private List<String> hand;
     private boolean turn;
+
+    public int getTowerStock() {
+        return towerStock;
+    }
+
+    public void setTowerStock(int towerStock) {
+        this.towerStock = towerStock;
+    }
+
+    public int getSaxonStock() {
+        return saxonStock;
+    }
+
+    public void setSaxonStock(int luxorStock) {
+        this.saxonStock = luxorStock;
+    }
+
+    public int getAmericanStock() {
+        return americanStock;
+    }
+
+    public void setAmericanStock(int americanStock) {
+        this.americanStock = americanStock;
+    }
+
+    public int getFestivalStock() {
+        return festivalStock;
+    }
+
+    public void setFestivalStock(int festivalStock) {
+        this.festivalStock = festivalStock;
+    }
+
+    public int getWorldwideStock() {
+        return worldwideStock;
+    }
+
+    public void setWorldwideStock(int worldwideStock) {
+        this.worldwideStock = worldwideStock;
+    }
+
+    public int getContinentalStock() {
+        return continentalStock;
+    }
+
+    public void setContinentalStock(int continentalStock) {
+        this.continentalStock = continentalStock;
+    }
+
+    public int getImperialStock() {
+        return imperialStock;
+    }
+
+    public void setImperialStock(int imperialStock) {
+        this.imperialStock = imperialStock;
+    }
 
     //Getters and Setters
     public int getMoney() {
@@ -35,13 +97,6 @@ public class Player {
     public void setStockValue(int stockValue) {
         this.stockValue = stockValue;
     }
-    public List<String> getStock() {
-        return stock;
-    }
-
-    public void setStock(List<String> stock) {
-        this.stock = stock;
-    }
 
     public List<String> getHand() {
         return hand;
@@ -63,14 +118,14 @@ public class Player {
         this.hand.remove(t);
     }
 
-    //Add stock to the player's list of stocks
-    public void addStock(String s){
-        this.stock.add(s);
+    //Remove money from a player's account
+    public void removeMoney(int v){
+        int m = getMoney();
+        money = m - v;
     }
 
-    //Remove stock from the player's list of stocks
-    public void removeStock(String s){
-        this.stock.remove(s);
-
+    //Add money to a player's account
+    public void addMoney(int v){
+        money += v;
     }
 }
