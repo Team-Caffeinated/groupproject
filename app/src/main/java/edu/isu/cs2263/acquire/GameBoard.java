@@ -63,31 +63,20 @@ public class GameBoard {
         Corpos = corpos;
     }
 
-    public static void main(String [] args) throws IOException {
-    //Testing for Game start and loading corpos
-    //newGame();
-    GameBoard Game = new GameBoard();
-    Game.setCorpos(loadCorpos());
-    System.out.println(Game.getCorpos());
-
-    //Loads Tiles into deck
-    Tile tiles = new Tile();
-    Game.setDeck(tiles.wholeTiles());
-    System.out.println(Game.getDeck());
-    //Testing Draw Tile
-
-        Game.addPlayedTile(Game.drawTile(Game.getDeck()));
-        System.out.println(Game.getPlayedTiles());
-        System.out.println(Game.getDeck());
-        Game.addPlayedTile("2A");
-        Game.addPlayedTile("1B");
-        Game.addPlayedTile("3B");
-        Game.addPlayedTile("2C");
-        Game.detectAdjacency("2B", Game.getPlayedTiles());
 
 
+    public void startGame(){
+        Tile tiles = new Tile();
+        setDeck(tiles.wholeTiles());
 
 
+    }
+    public static String startGame(GameBoard game){
+        String tile;
+        tile = game.drawTile(game.getDeck());
+        game.addPlayedTile(tile);
+        //System.out.println(tile);
+        return tile;
     }
     public String drawTile(List<String> deck){
         Random rnd = new Random();
