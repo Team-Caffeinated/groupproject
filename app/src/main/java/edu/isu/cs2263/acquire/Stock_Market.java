@@ -26,6 +26,86 @@ public class Stock_Market {
         continentalStockAvail = 25;
     }
 
+    public int getStockValue() {
+        return stockValue;
+    }
+
+    public void setStockValue(int stockValue) {
+        this.stockValue = stockValue;
+    }
+
+    public int getStockCount() {
+        return stockCount;
+    }
+
+    public void setStockCount(int stockCount) {
+        this.stockCount = stockCount;
+    }
+
+    public boolean isStockAvailable() {
+        return stockAvailable;
+    }
+
+    public void setStockAvailable(boolean stockAvailable) {
+        this.stockAvailable = stockAvailable;
+    }
+
+    public int getTowerStockAvail() {
+        return towerStockAvail;
+    }
+
+    public void setTowerStockAvail(int towerStockAvail) {
+        this.towerStockAvail = towerStockAvail;
+    }
+
+    public int getSaxonStockAvail() {
+        return saxonStockAvail;
+    }
+
+    public void setSaxonStockAvail(int saxonStockAvail) {
+        this.saxonStockAvail = saxonStockAvail;
+    }
+
+    public int getAmericanStockAvail() {
+        return americanStockAvail;
+    }
+
+    public void setAmericanStockAvail(int americanStockAvail) {
+        this.americanStockAvail = americanStockAvail;
+    }
+
+    public int getWorldwideStockAvail() {
+        return worldwideStockAvail;
+    }
+
+    public void setWorldwideStockAvail(int worldwideStockAvail) {
+        this.worldwideStockAvail = worldwideStockAvail;
+    }
+
+    public int getFestivalStockAvail() {
+        return festivalStockAvail;
+    }
+
+    public void setFestivalStockAvail(int festivalStockAvail) {
+        this.festivalStockAvail = festivalStockAvail;
+    }
+
+    public int getImperialStockAvail() {
+        return imperialStockAvail;
+    }
+
+    public void setImperialStockAvail(int imperialStockAvail) {
+        this.imperialStockAvail = imperialStockAvail;
+    }
+
+    public int getContinentalStockAvail() {
+        return continentalStockAvail;
+    }
+
+    public void setContinentalStockAvail(int continentalStockAvail) {
+        this.continentalStockAvail = continentalStockAvail;
+    }
+
     //Methods
     public void buyStock(Player p, Corporation c){
         int corpStockSize;
@@ -33,7 +113,7 @@ public class Stock_Market {
         String corpName = c.getName();
         int totalVal = val * c.getSize();
         if(p.getMoney() >= totalVal){
-            p.removeMoney(totalVal);
+            p.removeMoney(val);
             if(corpName == "Saxon"){
                 if(saxonStockAvail > 0) {
                     corpStockSize = p.getSaxonStock() + 1;
@@ -120,7 +200,7 @@ public class Stock_Market {
                 corpStockSize = p.getTowerStock() - 1;
                 p.setTowerStock(corpStockSize);
                 towerStockAvail++;
-                p.addMoney(totalVal);
+                p.addMoney(val);
             } else {
                 System.out.println("Player has no Tower stock to sell");
             }
@@ -130,7 +210,7 @@ public class Stock_Market {
                 corpStockSize = p.getSaxonStock() - 1;
                 p.setSaxonStock(corpStockSize);
                 saxonStockAvail++;
-                p.addMoney(totalVal);
+                p.addMoney(val);
             }
             else{
                 System.out.println("Player has no Saxon stock to sell");
@@ -141,7 +221,7 @@ public class Stock_Market {
                 corpStockSize = p.getAmericanStock() - 1;
                 p.setAmericanStock(corpStockSize);
                 americanStockAvail++;
-                p.addMoney(totalVal);
+                p.addMoney(val);
             }
             else{
                 System.out.println("PLayer has no American stock to sell");
@@ -152,7 +232,7 @@ public class Stock_Market {
                 corpStockSize = p.getFestivalStock() - 1;
                 p.setFestivalStock(corpStockSize);
                 festivalStockAvail++;
-                p.addMoney(totalVal);
+                p.addMoney(val);
             }
             else{
                 System.out.println("Player has no Festival stock to sell");
@@ -163,7 +243,7 @@ public class Stock_Market {
                 corpStockSize = p.getWorldwideStock() - 1;
                 p.setWorldwideStock(corpStockSize);
                 worldwideStockAvail++;
-                p.addMoney(totalVal);
+                p.addMoney(val);
             }
             else{
                 System.out.println("Player has no Worldwide stock to sell");
@@ -174,7 +254,7 @@ public class Stock_Market {
                 corpStockSize = p.getContinentalStock() - 1;
                 p.setContinentalStock(corpStockSize);
                 continentalStockAvail++;
-                p.addMoney(totalVal);
+                p.addMoney(val);
             }
             else{
                 System.out.println("Player has no Continental stock to sell");
@@ -185,7 +265,7 @@ public class Stock_Market {
                 corpStockSize = p.getImperialStock() - 1;
                 p.setImperialStock(corpStockSize);
                 imperialStockAvail++;
-                p.addMoney(totalVal);
+                p.addMoney(val);
             }
             else{
                 System.out.println("Player has no Imperial stock to sell");

@@ -8,23 +8,31 @@ import java.util.Scanner;
 
 import static edu.isu.cs2263.acquire.Corporation.*;
 import static edu.isu.cs2263.acquire.SaveManager.loadCorpos;
+
 //import static edu.isu.cs2263.acquire.SaveManager.newGame;
 
 public class GameBoard {
-    private static Corporation Tower = new Corporation("Tower", 0,"Red");
-    private static Corporation Continental = new Corporation("Continental", 0,"Purple");
-    private static Corporation Sackson = new Corporation("Sackson", 0,"Yellow");
-    private static Corporation American = new Corporation("American", 0,"Green");
-    private static Corporation Festival = new Corporation("Festival", 0,"Blue");
-    private static Corporation Imperial = new Corporation("Imperial", 0,"Orange");
-    private static Corporation Worldwide = new Corporation("Worldwide", 0,"Teal");
+    public static Tile tiles = new Tile();
+    public static Corporation Tower = new Corporation("Tower", 0,"Red");
+    public static Corporation Continental = new Corporation("Continental", 0,"Purple");
+    public static Corporation Sackson = new Corporation("Sackson", 0,"Yellow");
+    public static Corporation American = new Corporation("American", 0,"Green");
+    public static Corporation Festival = new Corporation("Festival", 0,"Blue");
+    public static Corporation Imperial = new Corporation("Imperial", 0,"Orange");
+    public static Corporation Worldwide = new Corporation("Worldwide", 0,"Teal");
     private static Player player1 = new Player ("player1", 5000);
     private static Player player2 = new Player ("player2", 5000);
     private static List<Corporation> Corpos;
     private static List<String> deck;
     private static List<String> playedTiles;
-    public List<Corporation> getCorpos() {
+
+    public GameBoard() {
+        deck = tiles.wholeTiles();
+    }
+
+    public List<Corporation> getCorpos(List<String> getTiles) {
         return Corpos;
+
     }
 
     public Player getPlayer1() {
@@ -63,33 +71,8 @@ public class GameBoard {
         Corpos = corpos;
     }
 
-    public static void main(String [] args) throws IOException {
-    //Testing for Game start and loading corpos
-    //newGame();
-    GameBoard Game = new GameBoard();
-    Game.setCorpos(loadCorpos());
-    System.out.println(Game.getCorpos());
 
-    //Loads Tiles into deck
-    Tile tiles = new Tile();
-    Game.setDeck(tiles.wholeTiles());
-    System.out.println(Game.getDeck());
-    //Testing Draw Tile
-
-        Game.addPlayedTile(Game.drawTile(Game.getDeck()));
-        System.out.println(Game.getPlayedTiles());
-        System.out.println(Game.getDeck());
-        Game.addPlayedTile("2A");
-        Game.addPlayedTile("1B");
-        Game.addPlayedTile("3B");
-        Game.addPlayedTile("2C");
-        Game.detectAdjacency("2B", Game.getPlayedTiles());
-
-
-
-
-    }
-    public String drawTile(List<String> deck){
+    public String drawTile(){
         Random rnd = new Random();
         int i = rnd.nextInt(deck.size());
         String x = deck.get(i);

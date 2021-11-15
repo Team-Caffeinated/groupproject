@@ -56,7 +56,7 @@ public class Corporation {
     }
     public void increaseSize(Integer increase, String tile){
         Size = Size + increase;
-        this.addTile(tile);
+        tiles.add(tile);
 
     }
     public static void merge(Corporation one, Corporation two, String tile){
@@ -203,11 +203,6 @@ public class Corporation {
                 ", Size=" + Size +
                 ", color='" + color + '\'' +
                 '}';
-    }
-    public void addTile(String tile){
-
-        tiles.add(tile);
-
     }
     public boolean searchList(String adjacentTile){
         for (int i = 0; i < this.getSize(); i++){

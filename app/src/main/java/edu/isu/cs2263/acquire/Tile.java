@@ -21,7 +21,7 @@ public class Tile {
         this.tileAlphabet = tileAlphabet;
     }
 
-    public  ArrayList<String> wholeTiles(){
+    public ArrayList<String> wholeTiles(){
         ArrayList<String> tileList=new ArrayList<>();
         String[] tileAlphabetList={"A","B","C","D","E","F","G","H","I"};
         for(int i=1;i<13;i++){
@@ -32,9 +32,7 @@ public class Tile {
         return tileList;
     }
 
-    public static void main(String[] args) {
-       // System.out.println(wholeTiles());
-    }
+
 
 }
 

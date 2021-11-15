@@ -1,5 +1,6 @@
 package edu.isu.cs2263.acquire;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
@@ -17,7 +18,7 @@ public class Player {
     private List<String> hand;
     private boolean turn;
 
-<<<<<<< HEAD
+
     public int getTowerStock() {
         return towerStock;
     }
@@ -71,12 +72,12 @@ public class Player {
     }
 
     public void setImperialStock(int imperialStock) {
-        this.imperialStock = imperialStock;
-=======
+        this.imperialStock = imperialStock;}
+
     public Player(String name, int money) {
         this.name = name;
         this.money = money;
->>>>>>> 0a256b253724bbae6b7571dd01ee90f856dfd8d6
+
     }
 
     //Getters and Setters
@@ -116,7 +117,17 @@ public class Player {
 
     //Add a tile to the player's hand
     public void addTile(String t){
-        this.hand.add(t);
+        if(this.hand == null){
+            List<String> temp = new ArrayList<>();
+            temp.add(t);
+            this.setHand(temp);
+
+
+        }
+        else{
+            this.hand.add(t);
+        }
+
     }
 
     //Remove a tile from the player's hand
