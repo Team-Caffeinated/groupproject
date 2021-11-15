@@ -22,7 +22,7 @@ import javafx.scene.control.Label;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class App extends Application {
+public class StartPage extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -178,19 +178,19 @@ public class App extends Application {
         GridPane.setHalignment(aButton, HPos.LEFT);
 
 
-        aButton.setOnAction(e -> {
-            makeboard();
+            aButton.setOnAction(e -> {
+                makeboard();
             /*
             Integer value1 = Integer.valueOf(firstValue.getText());
             Integer value2 = Integer.valueOf(secondValue.getText());
             Integer r = value1 + value2;
 
              */
-            //result.setText(r.toString());
-        });
-        myStage.setScene(myScene);
-        myStage.show();
-    }
+                //result.setText(r.toString());
+            });
+            myStage.setScene(myScene);
+            myStage.show();
+        }
 
 
     public void makeboard() {
@@ -231,6 +231,6 @@ public class App extends Application {
 
 
 
-}
+    }
 
 
