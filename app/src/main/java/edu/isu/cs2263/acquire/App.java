@@ -203,7 +203,7 @@ public class App extends Application {
 
         startthegame.setOnMouseClicked(event -> {
             String tile;
-            tile = game.drawTile(game.getDeck());
+            tile = game.drawTile();
             startthegame.setText(tile);
             game.addPlayedTile(tile);
             System.out.println(game.getPlayedTiles());
