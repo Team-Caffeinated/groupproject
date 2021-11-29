@@ -40,7 +40,7 @@ public class GameBoardView extends Application {
 
         startthegame.setOnMouseClicked(event -> {
             String tile;
-            tile = game.drawTile(game.getDeck());
+            tile = game.drawTile();
             startthegame.setText(tile);
             game.addPlayedTile(tile);
             System.out.println(game.getPlayedTiles());
@@ -66,15 +66,26 @@ public class GameBoardView extends Application {
                 btn[i][j].setText(tile.remove(0));
                 btn[i][j].setPrefSize(50, 50);
                 gridPane.add(btn[i][j], j, i);
+                ArrayList<String> list=new ArrayList<>();
+                list.add("1A");
+                list.add("2A");
+                btn[i][j].setOnMouseClicked(event -> {
+                    System.out.println(list);
+                    if (btn[0][0].getText().equals(list.get(0))){
+                        list.remove(0);
+                        System.out.println(list);
+                    }
+
+                });
             }
         }
 
 //Adding GridPane to the scene
 
         Group root = new Group(gridPane,startthegame);
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root,900,900);
         primaryStage.setScene(scene);
-        primaryStage.setFullScreen(true);
+
         primaryStage.show();
     }
 }

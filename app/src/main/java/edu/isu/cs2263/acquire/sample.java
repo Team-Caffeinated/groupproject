@@ -22,14 +22,117 @@ import javafx.scene.control.Label;
 import java.util.ArrayList;
 import java.util.Optional;
 
-public class StartPage extends Application {
+public class sample extends Application {
+    Stage startstage=new Stage();
+    Stage playerstage=new Stage();
+    Stage boardstage=new Stage();
 
-    @Override
+
+
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+
+    public void exit() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setContentText("Do you want to exit?");
+        Optional<ButtonType> result = alert.showAndWait();
+        result.ifPresent(btnType -> {
+            if (btnType.getButtonData().isDefaultButton())
+                System.exit(0);
+        });
+    }
+
+
+
+    public void playerInfo(Stage myStage) {
+        myStage.setTitle("PLAYER'S INFORMATION");
+        TextField firstValue = new TextField();
+        TextField secondValue = new TextField();
+
+
+        GridPane rootNode = new GridPane();
+        Scene myScene = new Scene(rootNode, 300, 200);
+        Button play = new Button("Let's Play");
+        Button back=new Button("Back to main page");
+
+
+        rootNode.setPadding(new Insets(15));
+        rootNode.setHgap(5);
+        rootNode.setVgap(5);
+
+
+
+        rootNode.add(new Label("Player1 Name:"), 0, 0);
+        rootNode.add(firstValue, 1, 0);
+        rootNode.add(new Label("Player2 Name:"), 0, 1);
+        rootNode.add(secondValue, 1, 1);
+
+        rootNode.add(play, 1, 2);
+        GridPane.setHalignment(play, HPos.LEFT);
+
+
+        play.setOnAction(e -> {
+            makeboard(new Stage());
+            myStage.hide();
+        });
+        back.setOnAction(event -> {
+
+
+        });
+        myStage.setScene(myScene);
+        myStage.show();
+    }
+
+
+    public void makeboard(Stage primaryStage) {
+        Button startthegame=new Button("Start the game");
+        startthegame.setTranslateX(700);
+        startthegame.setTranslateY(700);
+        GameBoard game = new GameBoard();
+        game.startGame();
+
+        startthegame.setOnMouseClicked(event -> {
+            String tile;
+            tile = game.drawTile();
+            startthegame.setText(tile);
+            game.addPlayedTile(tile);
+            System.out.println(game.getPlayedTiles());
+        });
+
+        primaryStage.setTitle("GridPane example");
+        GridPane gridPane = new GridPane();
+        Button[][] btn = new Button[12][12];
+        ArrayList<String> tile= new Tile().wholeTiles();
+        for(int j=0; j<12;j++){
+            for(int i=0; i<9; i++){
+                btn[i][j] = new Button();
+                btn[i][j].setText(tile.remove(0));
+                btn[i][j].setPrefSize(50, 50);
+                gridPane.add(btn[i][j], j, i);
+            }
+        }
+
+        Group root = new Group(gridPane,startthegame);
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setFullScreen(true);
+        primaryStage.show();
+    }
+
+
     public void start(Stage primaryStage) throws Exception {
         PauseTransition pauseacquire = new PauseTransition(Duration.seconds(2.4));
         PauseTransition pausenewgame = new PauseTransition(Duration.seconds(5));
         PauseTransition pauseloadgame = new PauseTransition(Duration.seconds(6));
         PauseTransition pauseexitgame = new PauseTransition(Duration.seconds(7));
+        //--------------------------------------------------------------------------------------------------------------
+        //stages
+        Stage playerinfostage=new Stage();
+        Stage boardstage=new Stage();
         //--------------------------------------------------------------------------------------------------------------
         primaryStage.setTitle("ACQUIRE GAME");
         Label acquire=new Label("WELCOME TO ACQUIRE");
@@ -68,7 +171,8 @@ public class StartPage extends Application {
         });
         pausenewgame.play();
         newgame.setOnMouseClicked(event -> {
-            playerInfo();
+            playerInfo(playerinfostage);
+            primaryStage.hide();
         });
         //-------------------------------------------------------------------------------------------------------------
         //button for load game
@@ -133,104 +237,7 @@ public class StartPage extends Application {
     }
 
 
-    public static void main(String[] args) {
-        launch(args);
-    }
 
-
-    public void exit() {
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Confirmation");
-        alert.setContentText("Do you want to exit?");
-        Optional<ButtonType> result = alert.showAndWait();
-        result.ifPresent(btnType -> {
-            if (btnType.getButtonData().isDefaultButton())
-                System.exit(0);
-        });
-    }
-
-
-
-    public void playerInfo() {
-        Stage myStage=new Stage();
-        myStage.setTitle("PLAYER'S INFORMATION");
-        TextField firstValue = new TextField();
-        TextField secondValue = new TextField();
-
-
-        GridPane rootNode = new GridPane();
-        Scene myScene = new Scene(rootNode, 300, 200);
-        Button aButton = new Button("Let's Play");
-
-
-        rootNode.setPadding(new Insets(15));
-        rootNode.setHgap(5);
-        rootNode.setVgap(5);
-
-
-
-        rootNode.add(new Label("Player1 Name:"), 0, 0);
-        rootNode.add(firstValue, 1, 0);
-        rootNode.add(new Label("Player2 Name:"), 0, 1);
-        rootNode.add(secondValue, 1, 1);
-
-        rootNode.add(aButton, 1, 2);
-        GridPane.setHalignment(aButton, HPos.LEFT);
-
-
-            aButton.setOnAction(e -> {
-                makeboard();
-            /*
-            Integer value1 = Integer.valueOf(firstValue.getText());
-            Integer value2 = Integer.valueOf(secondValue.getText());
-            Integer r = value1 + value2;
-
-             */
-                //result.setText(r.toString());
-            });
-            myStage.setScene(myScene);
-            myStage.show();
-        }
-
-
-    public void makeboard() {
-        Stage primaryStage=new Stage();
-        Button startthegame=new Button("Start the game");
-        startthegame.setTranslateX(700);
-        startthegame.setTranslateY(700);
-        GameBoard game = new GameBoard();
-        game.startGame();
-
-        startthegame.setOnMouseClicked(event -> {
-            String tile;
-            tile = game.drawTile();
-            startthegame.setText(tile);
-            game.addPlayedTile(tile);
-            System.out.println(game.getPlayedTiles());
-        });
-
-        primaryStage.setTitle("GridPane example");
-        GridPane gridPane = new GridPane();
-        Button[][] btn = new Button[12][12];
-        ArrayList<String> tile= new Tile().wholeTiles();
-        for(int j=0; j<12;j++){
-            for(int i=0; i<9; i++){
-                btn[i][j] = new Button();
-                btn[i][j].setText(tile.remove(0));
-                btn[i][j].setPrefSize(50, 50);
-                gridPane.add(btn[i][j], j, i);
-            }
-        }
-
-        Group root = new Group(gridPane,startthegame);
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.setFullScreen(true);
-        primaryStage.show();
-    }
-
-
-
-    }
+}
 
 

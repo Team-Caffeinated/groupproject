@@ -47,9 +47,9 @@ public class PlayerView extends Application {
             Integer r = value1 + value2;
 
              */
-            Platform.exit();
             //result.setText(r.toString());
         });
+
 
         myStage.setScene(myScene);
 
