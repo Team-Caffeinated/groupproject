@@ -6,9 +6,15 @@ import javafx.collections.ObservableList;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.*;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -51,8 +57,8 @@ public class New extends Application {
         gameBoard.getPlayer1().setHand(hand);
 
         hand1.add("2A");
-        hand1.add("1B");
-        hand1.add("12I");
+        hand1.add("4A");
+        hand1.add("5A");
         hand1.add("4D");
         hand1.add("3D");
 

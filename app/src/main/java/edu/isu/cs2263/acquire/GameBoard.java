@@ -520,7 +520,7 @@ public class GameBoard {
     public static void main(String[] args) {
 
         GameBoard gb=new GameBoard();
-       // System.out.println(gb.lisrofCorpsname().contains());
+        System.out.println(gb.drawTile());
 
 
     }
