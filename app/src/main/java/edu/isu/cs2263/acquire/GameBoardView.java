@@ -45,7 +45,6 @@ public class GameBoardView extends Application {
             game.addPlayedTile(tile);
             System.out.println(game.getPlayedTiles());
         });
-        System.out.println("this bitch "+game.getPlayedTiles());
 
         primaryStage.setTitle("GridPane example");
 

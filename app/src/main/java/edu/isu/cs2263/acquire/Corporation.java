@@ -60,7 +60,6 @@ public class Corporation {
     public void increaseSize(Integer increase, String tile) {
         Size = Size + increase;
         tiles.add(tile);
-
     }
 
     public static void merge(Corporation one, Corporation two, String tile) {
@@ -82,6 +81,9 @@ public class Corporation {
             newTiles.addAll(two.getTiles());
             two.setTiles(newTiles);
             one.setTiles(null);
+        }
+        else{
+
         }
     }
 
@@ -122,6 +124,9 @@ public class Corporation {
             three.setTiles(newTiles);
             two.setTiles(null);
             one.setTiles(null);
+        }
+        else{
+
         }
     }
 
@@ -190,6 +195,9 @@ public class Corporation {
             two.setTiles(null);
             one.setTiles(null);
             three.setTiles(null);
+        }
+        else{
+
         }
     }
 

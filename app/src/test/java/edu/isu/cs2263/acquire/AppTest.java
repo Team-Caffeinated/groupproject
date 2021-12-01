@@ -4,8 +4,17 @@
 package edu.isu.cs2263.acquire;
 
 import org.junit.jupiter.api.Test;
+import org.testng.junit.JUnitTestRunner;
+
+
+import javax.xml.transform.Result;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
+    public static void main(String[] args){
+        JUnitTestRunner junit = new JUnitTestRunner();
 
+        //junit.run(CorporationTest.class);
+    }
 }

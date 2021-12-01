@@ -15,7 +15,7 @@ public class Player {
     private int worldwideStock;
     private int continentalStock;
     private int imperialStock;
-    private List<String> hand;
+    private ArrayList<String> hand;
     private boolean turn;
 
 
@@ -105,11 +105,11 @@ public class Player {
         this.stockValue = stockValue;
     }
 
-    public List<String> getHand() {
+    public ArrayList<String> getHand() {
         return hand;
     }
 
-    public void setHand(List<String> hand) {
+    public void setHand(ArrayList<String> hand) {
         this.hand = hand;
     }
 
@@ -118,7 +118,7 @@ public class Player {
     //Add a tile to the player's hand
     public void addTile(String t){
         if(this.hand == null){
-            List<String> temp = new ArrayList<>();
+            ArrayList<String> temp = new ArrayList<>();
             temp.add(t);
             this.setHand(temp);
 

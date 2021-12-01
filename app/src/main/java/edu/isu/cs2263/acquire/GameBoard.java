@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import static edu.isu.cs2263.acquire.Corporation.*;
 import static edu.isu.cs2263.acquire.SaveManager.loadCorpos;
+import static edu.isu.cs2263.acquire.Tile.wholeTiles;
 //import static edu.isu.cs2263.acquire.SaveManager.newGame;
 
 public class GameBoard {
@@ -28,6 +29,9 @@ public class GameBoard {
     private static List<Corporation> Corpos;
     private static List<String> deck;
     private static List<String> playedTiles;
+    public GameBoard(){
+        this.deck = wholeTiles();
+    }
     //==============================================================================================================
 
     public String helpval;
@@ -91,7 +95,7 @@ public class GameBoard {
 
     public void startGame() {
         Tile tiles = new Tile();
-        setDeck(tiles.wholeTiles());
+        setDeck(wholeTiles());
 
 
     }
@@ -112,7 +116,7 @@ public class GameBoard {
         return x;
     }
 
-    public void detectAdjacency(String tile, List<String> tiles) {
+  /* public void detectAdjacency(String tile, List<String> tiles) {
         Corporation adjacentCorp1 = null;
         Corporation adjacentCorp2 = null;
         Corporation adjacentCorp3 = null;
@@ -200,9 +204,9 @@ public class GameBoard {
         else {
 
         }
-    }
+    }*/
 
-    public static boolean checkRight(int tileNum, int checkedTileNum) {
+    /*public static boolean checkRight(int tileNum, int checkedTileNum) {
         if (checkedTileNum == (tileNum + 1)) {
             return true;
         } else {
@@ -237,9 +241,10 @@ public class GameBoard {
         }
 
     }
-
+*/
     //======================================================================================================================
     public ArrayList<String> listofwholetilesthatplayed = new ArrayList<>();
+    public ArrayList<Integer> integeroflistofwholetilesthatplayed = new ArrayList<>();
 
 
 
@@ -491,7 +496,7 @@ public class GameBoard {
 
     }
 
-    public static Corporation searchCorporations(String adjacentTile){
+    /*public static Corporation searchCorporations(String adjacentTile){
         if(Tower.searchList(adjacentTile)){
             return Tower;
         }
@@ -515,7 +520,7 @@ public class GameBoard {
         }
         return null;
     }
-
+*/
 
     public static void main(String[] args) {
 

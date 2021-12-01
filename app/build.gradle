@@ -23,6 +23,9 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.testng:testng:7.1.0'
+    implementation 'org.testng:testng:7.1.0'
+
     // Use JUnit Jupiter for testing.
     testImplementation 'org.junit.jupiter:junit-jupiter:5.7.2'
 
@@ -58,6 +61,7 @@ javafx{
 }
 
 test{
+    useJUnitPlatform();
     finalizedBy jacocoTestReport // report is always generated after tests run
 }
 jacocoTestReport{

@@ -49,11 +49,11 @@ public class New extends Application {
         //======================================================================================================
         //=============================================================================================================
         // making sample hand for players
-        hand.add("1A");
-        hand.add("3A");
-        hand.add("4C");
-        hand.add("5D");
-        hand.add("4E");
+        hand.add(gameBoard.drawTile());
+        hand.add(gameBoard.drawTile());
+        hand.add(gameBoard.drawTile());
+        hand.add(gameBoard.drawTile());
+        hand.add(gameBoard.drawTile());
         gameBoard.getPlayer1().setHand(hand);
 
         hand1.add("2A");
@@ -163,6 +163,7 @@ public class New extends Application {
         launch(args);
     }
     private void update() {
+        place.setText(place.getText().toUpperCase());
         for (String value : gameBoard.getPlayer1().getHand()) {
             if (value.equals(place.getText())) {
                 for (int s = 0; s < 108; s++) {
@@ -273,6 +274,7 @@ public class New extends Application {
                                         gridPane.getChildren().get(s).setStyle(gridPane.getChildren().get(s - 1).getStyle());
                                     }
                                 }
+
                             }
                             else {gridPane.getChildren().get(s).setStyle("-fx-background-color: gray");}
 
@@ -280,13 +282,11 @@ public class New extends Application {
                 }
             }
         }
-
-
+        place1.setText(place1.getText().toUpperCase());
         for (String value1 : gameBoard.getPlayer2().getHand()) {
             if (value1.equals(place1.getText())) {
                 for (int s = 0; s < 108; s++) {
                     if (gridPane.getChildren().get(s).getAccessibleText().equals(place1.getText())) {
-
                         gameBoard.listofwholetilesthatplayed.add(place1.getText());
                         if (gameBoard.check(gameBoard.listofwholetilesthatplayed, place1.getText())) {
                             if (s + 9 <= 107) {
@@ -394,8 +394,6 @@ public class New extends Application {
                                     gridPane.getChildren().get(s).setStyle(gridPane.getChildren().get(s - 1).getStyle());
                                 }
                             }
-
-
                         }
                         else{gridPane.getChildren().get(s).setStyle("-fx-background-color: gray");}
 
@@ -409,6 +407,9 @@ public class New extends Application {
         for (Corporation co : gb.lisrofCorp()) {
             if (selectedItem.equals(co.getName())) {
                 color = co.getColor();
+                co.increaseSize(1, place.getText());
+                co.increaseSize(1, place1.getText());
+                System.out.println(co.getSize());
             }
 
 
