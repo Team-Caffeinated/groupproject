@@ -1,11 +1,6 @@
 package edu.isu.cs2263.acquire;
 
 public class Stock_Market {
-    //Attributes
-    private int stockValue;
-    private int stockCount;
-    private boolean stockAvailable;
-
     //Corporation stock availability
     private int towerStockAvail;
     private int saxonStockAvail;
@@ -24,30 +19,6 @@ public class Stock_Market {
         festivalStockAvail = 25;
         imperialStockAvail = 25;
         continentalStockAvail = 25;
-    }
-
-    public int getStockValue() {
-        return stockValue;
-    }
-
-    public void setStockValue(int stockValue) {
-        this.stockValue = stockValue;
-    }
-
-    public int getStockCount() {
-        return stockCount;
-    }
-
-    public void setStockCount(int stockCount) {
-        this.stockCount = stockCount;
-    }
-
-    public boolean isStockAvailable() {
-        return stockAvailable;
-    }
-
-    public void setStockAvailable(boolean stockAvailable) {
-        this.stockAvailable = stockAvailable;
     }
 
     public int getTowerStockAvail() {
@@ -275,7 +246,131 @@ public class Stock_Market {
 
     public void tradeStock(Player p, Corporation defunct, Corporation corp, int numStocks){
         int newStock = numStocks/2;
-        
+        String defunctName = defunct.getName();
+        String corpName = corp.getName();
+
+        //If statements to check available stock and add if available
+        if(corpName == "Saxon"){
+            if(newStock <= saxonStockAvail){
+                int current = p.getSaxonStock();
+                current += newStock;
+                p.setSaxonStock(current);
+            }
+            else{
+                System.out.println("There is not enough Saxon stock to perform this trade");
+                return;
+            }
+        }
+        else if(corpName == "Tower"){
+            if(newStock <= towerStockAvail){
+                int current = p.getTowerStock();
+                current += newStock;
+                p.setTowerStock(current);
+            }
+            else{
+                System.out.println("There is not enough Tower stock to perform this trade");
+                return;
+            }
+        }
+        else if(corpName == "American"){
+            if(newStock <= americanStockAvail){
+                int current = p.getAmericanStock();
+                current += newStock;
+                p.setAmericanStock(current);
+            }
+            else{
+                System.out.println("There is not enough American stock to perform this trade");
+                return;
+            }
+        }
+        else if(corpName == "Festival"){
+            if(newStock <= festivalStockAvail){
+                int current = p.getFestivalStock();
+                current += newStock;
+                p.setFestivalStock(current);
+            }
+            else{
+                System.out.println("There is not enough Festival stock to perform this trade");
+                return;
+            }
+        }
+        else if(corpName == "Worldwide"){
+            if(newStock <= worldwideStockAvail){
+                int current = p.getWorldwideStock();
+                current += newStock;
+                p.setWorldwideStock(current);
+            }
+            else{
+                System.out.println("There is not enough Worldwide stock to perform this trade");
+                return;
+            }
+        }
+        else if(corpName == "Continental"){
+            if(newStock <= continentalStockAvail){
+                int current = p.getContinentalStock();
+                current += newStock;
+                p.setContinentalStock(current);
+            }
+            else{
+                System.out.println("There is not enough Continental stock to perform this trade");
+                return;
+            }
+        }
+        else if(corpName == "Imperial"){
+            if(newStock <= imperialStockAvail){
+                int current = p.getImperialStock();
+                current += newStock;
+                p.setImperialStock(current);
+            }
+            else{
+                System.out.println("There is not enough Imperial stock to perform this trade");
+                return;
+            }
+        }
+
+        //If statements to remove defunct stock
+        if(defunctName == "Saxon"){
+            int current = p.getSaxonStock();
+            current -= numStocks;
+            p.setSaxonStock(current);
+            saxonStockAvail += numStocks;
+        }
+        else if(defunctName == "Tower"){
+            int current = p.getTowerStock();
+            current -= numStocks;
+            p.setTowerStock(current);
+            towerStockAvail += numStocks;
+        }
+        else if(defunctName == "American"){
+            int current = p.getAmericanStock();
+            current -= numStocks;
+            p.setAmericanStock(current);
+            americanStockAvail += numStocks;
+        }
+        else if(defunctName == "Festival"){
+            int current = p.getFestivalStock();
+            current -= numStocks;
+            p.setFestivalStock(current);
+            festivalStockAvail += numStocks;
+        }
+        else if(defunctName == "Worldwide"){
+            int current = p.getWorldwideStock();
+            current -= numStocks;
+            p.setWorldwideStock(current);
+            worldwideStockAvail += numStocks;
+        }
+        else if(defunctName == "Continental"){
+            int current = p.getContinentalStock();
+            current -= numStocks;
+            p.setContinentalStock(current);
+            continentalStockAvail += numStocks;
+        }
+        else if(defunctName == "Imperial"){
+            int current = p.getImperialStock();
+            current -= numStocks;
+            p.setImperialStock(current);
+            imperialStockAvail += numStocks;
+        }
     }
 
     public int checkValue(Corporation c) {
@@ -368,5 +463,137 @@ public class Stock_Market {
             }
         }
         return 0;
+    }
+
+    public void bonusValue(Corporation defunct, Player p1, Player p2){
+        String corpName = defunct.getName();
+        int majorValSaxon = checkValue(defunct) * 10;
+        int minorValSaxon = majorValSaxon / 2;
+        if(corpName == "Saxon"){
+            if(p1.getSaxonStock() > p2.getSaxonStock()){
+                if(p1.getSaxonStock() > 0){
+                    p1.addMoney(majorValSaxon);
+                }
+                if(p2.getSaxonStock() > 0){
+                    p2.addMoney(minorValSaxon);
+                }
+            }
+            else{
+                if(p2.getSaxonStock() > 0){
+                    p2.addMoney(majorValSaxon);
+                }
+                if(p1.getSaxonStock() > 0){
+                    p1.addMoney(minorValSaxon);
+                }
+            }
+        }
+        else if(corpName == "Tower"){
+            if(p1.getTowerStock() > p2.getTowerStock()){
+                if(p1.getTowerStock() > 0){
+                    p1.addMoney(majorValSaxon);
+                }
+                if(p2.getTowerStock() > 0){
+                    p2.addMoney(minorValSaxon);
+                }
+            }
+            else{
+                if(p2.getTowerStock() > 0){
+                    p2.addMoney(majorValSaxon);
+                }
+                if(p1.getTowerStock() > 0){
+                    p1.addMoney(minorValSaxon);
+                }
+            }
+        }
+        else if(corpName == "American"){
+            if(p1.getAmericanStock() > p2.getAmericanStock()){
+                if(p1.getAmericanStock() > 0){
+                    p1.addMoney(majorValSaxon);
+                }
+                if(p2.getAmericanStock() > 0){
+                    p2.addMoney(minorValSaxon);
+                }
+            }
+            else{
+                if(p2.getAmericanStock() > 0){
+                    p2.addMoney(majorValSaxon);
+                }
+                if(p1.getAmericanStock() > 0){
+                    p1.addMoney(minorValSaxon);
+                }
+            }
+        }
+        else if(corpName == "Festival"){
+            if(p1.getFestivalStock() > p2.getFestivalStock()){
+                if(p1.getFestivalStock() > 0){
+                    p1.addMoney(majorValSaxon);
+                }
+                if(p2.getFestivalStock() > 0){
+                    p2.addMoney(minorValSaxon);
+                }
+            }
+            else{
+                if(p2.getFestivalStock() > 0){
+                    p2.addMoney(majorValSaxon);
+                }
+                if(p1.getFestivalStock() > 0){
+                    p1.addMoney(minorValSaxon);
+                }
+            }
+        }
+        else if(corpName == "Worldwide"){
+            if(p1.getWorldwideStock() > p2.getWorldwideStock()){
+                if(p1.getWorldwideStock() > 0){
+                    p1.addMoney(majorValSaxon);
+                }
+                if(p2.getWorldwideStock() > 0){
+                    p2.addMoney(minorValSaxon);
+                }
+            }
+            else{
+                if(p2.getWorldwideStock() > 0){
+                    p2.addMoney(majorValSaxon);
+                }
+                if(p1.getWorldwideStock() > 0){
+                    p1.addMoney(minorValSaxon);
+                }
+            }
+        }
+        else if(corpName == "Continental"){
+            if(p1.getContinentalStock() > p2.getContinentalStock()){
+                if(p1.getContinentalStock() > 0){
+                    p1.addMoney(majorValSaxon);
+                }
+                if(p2.getContinentalStock() > 0){
+                    p2.addMoney(minorValSaxon);
+                }
+            }
+            else{
+                if(p2.getContinentalStock() > 0){
+                    p2.addMoney(majorValSaxon);
+                }
+                if(p1.getContinentalStock() > 0){
+                    p1.addMoney(minorValSaxon);
+                }
+            }
+        }
+        else if(corpName == "Imperial"){
+            if(p1.getImperialStock() > p2.getImperialStock()){
+                if(p1.getImperialStock() > 0){
+                    p1.addMoney(majorValSaxon);
+                }
+                if(p2.getImperialStock() > 0){
+                    p2.addMoney(minorValSaxon);
+                }
+            }
+            else{
+                if(p2.getImperialStock() > 0){
+                    p2.addMoney(majorValSaxon);
+                }
+                if(p1.getImperialStock() > 0){
+                    p1.addMoney(minorValSaxon);
+                }
+            }
+        }
     }
 }
