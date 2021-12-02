@@ -247,10 +247,23 @@ public class GameBoard {
     public ArrayList<Integer> integeroflistofwholetilesthatplayed = new ArrayList<>();
 
 
+    /*** check this area again there is a problem here when we want to place a tile on board( case 12A and 11I)
 
+     */
 
     public boolean check(ArrayList<String> list, String tile){
         for(String value: list){
+            if(splitNum(value)==splitNum(tile)){
+                if(splitChar(value)==splitChar(tile)-1){return true;}
+                if(splitChar(value)==splitChar(tile)+1){return true;}
+            }
+            if(splitChar(value)==splitChar(tile)){
+                if(splitNum(value)==splitNum(tile)-1){return true;}
+                if(splitNum(value)==splitNum(tile)+1){return true;}
+            }
+            /*
+
+            if(value.length()==2 && tile.length()==2){
             if(value.charAt(0) == tile.charAt(0)){
                 if (value.charAt(1) == tile.charAt(1) - 1) {
 
@@ -270,6 +283,56 @@ public class GameBoard {
                     return true;
                 }
             }
+
+            }
+            if(value.length()==3 && tile.length()==3){
+                if(value.charAt(0)+value.charAt(1) == tile.charAt(0)+tile.charAt(1)){
+                    if (value.charAt(2) == tile.charAt(2) - 1) {
+
+                        return true;}
+                    if (value.charAt(2) == tile.charAt(2) + 1) {
+
+                        return true;
+                    }
+                }
+                if (value.charAt(2) == tile.charAt(2)) {
+                    if (value.charAt(0)+value.charAt(1) == tile.charAt(0)+tile.charAt(1) - 1) {
+
+                        return true;
+                    }
+                    if (value.charAt(0)+value.charAt(1) == tile.charAt(0)+tile.charAt(1) + 1) {
+
+                        return true;
+                    }
+                }
+
+            }
+
+
+            /*
+            else if (value.length()==3){
+                if(value.charAt(0)+value.charAt(1) == tile.charAt(0)+tile.charAt(1)){
+                    if (value.charAt(2) == tile.charAt(2) - 1) {
+
+                        return true;}
+                    if (value.charAt(2) == tile.charAt(2) + 1) {
+
+                        return true;
+                    }
+                }
+                if (value.charAt(2) == tile.charAt(2)) {
+                    if (value.charAt(0)+value.charAt(1) == tile.charAt(0)+tile.charAt(1) - 1) {
+
+                        return true;
+                    }
+                    if (value.charAt(0)+value.charAt(1) == tile.charAt(0)+tile.charAt(1) + 1) {
+
+                        return true;
+                    }
+                }
+            }
+
+             */
         }
         return false;
     }
@@ -525,7 +588,7 @@ public class GameBoard {
     public static void main(String[] args) {
 
         GameBoard gb=new GameBoard();
-        System.out.println(gb.drawTile());
+
 
 
     }

@@ -9,6 +9,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -22,14 +23,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class testingboard extends Application {
-
-    ArrayList<Integer> forchangingtilescolor=new ArrayList<>();
-
-
+public class TestBoard extends Application {
     Tile ttt=new Tile();
+    ArrayList<Integer> forchangingtilescolor=new ArrayList<>();
     ArrayList<Integer> integerArrayList=new ArrayList<>();
-    Integer size=0;
+    //==================================================================================================================
+    //==================================================================================================================
     Integer sizetower=0;
     Integer sizeamerican=0;
     Integer sizefestival=0;
@@ -37,8 +36,8 @@ public class testingboard extends Application {
     Integer sizesackson=0;
     Integer sizeworldwide=0;
     Integer sizeimperial=0;
-
-
+    //==================================================================================================================
+    //==================================================================================================================
     ArrayList<Integer> towerintegertiles =new ArrayList<>();
     ArrayList<Integer> americanintegertiles =new ArrayList<>();
     ArrayList<Integer> festivalintegertiles =new ArrayList<>();
@@ -46,15 +45,13 @@ public class testingboard extends Application {
     ArrayList<Integer> sacksonintegertiles =new ArrayList<>();
     ArrayList<Integer> worldwideintegertiles =new ArrayList<>();
     ArrayList<Integer> imperialintegertiles =new ArrayList<>();
-
-
-
+    //==================================================================================================================
+    //==================================================================================================================
     GridPane gridPane = new GridPane();
     static GameBoard gameBoard = new GameBoard();
-    //List<String> nebulas=Arrays.asList(gameBoard.tower.getName(),gameBoard.american.getName(),gameBoard.festival.getName(),gameBoard.continental.getName(),gameBoard.sackson.getName(),gameBoard.worldwide.getName(),gameBoard.imperial.getName());
     List<Corporation> nebulas=Arrays.asList(gameBoard.tower,gameBoard.american,gameBoard.festival,gameBoard.continental,gameBoard.sackson,gameBoard.worldwide,gameBoard.imperial);
-
-
+    //==================================================================================================================
+    //==================================================================================================================
     GameBoard gb=new GameBoard();
     private final ComboBox<String> mComboBox=new ComboBox<>();
     String selectedItem;
@@ -62,13 +59,15 @@ public class testingboard extends Application {
     private final TextField place = new TextField();
     private final Button placebutton = new Button("PLACE");
     private final TextField place1 = new TextField();
-    private final Button placebutton1 = new Button("second player PLACE");
+    private final Button placebutton1 = new Button("PLACE");
     private static final Button selectyourcorporation=new Button("Select Your Corporation");
     ArrayList<String> hand = new ArrayList<>();
     ArrayList<String> hand1 = new ArrayList<>();
     Tile whhhholetiles = new Tile();
     static Stage stage=new Stage();
     public static String color;
+
+    ObservableList<String> corpsize=FXCollections.observableArrayList();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -122,7 +121,7 @@ public class testingboard extends Application {
 
         hand1.add("12A");
         hand1.add("4A");
-        hand1.add("8A");
+        hand1.add("3A");
 
 
 
@@ -160,77 +159,164 @@ public class testingboard extends Application {
         //=============================================================================================================
         //=============================================================================================================
         //making text field and place button for player
-        place.setLayoutX(600);
-        place.setLayoutY(700);
-        placebutton.setLayoutX(550);
-        placebutton.setLayoutY(700);
+        place.setPromptText("Type Your Tile Here (Lower or Upper case)");
+        place.setLayoutX(850);
+        place.setLayoutY(320);
+        placebutton.setLayoutX(900);
+        placebutton.setLayoutY(350);
 
-
-        place1.setLayoutX(600);
-        place1.setLayoutY(700);
-        placebutton1.setLayoutX(430);
-        placebutton1.setLayoutY(700);
+        place1.setPromptText("Type Your Tile Here (Lower or Upper case)");
+        place1.setLayoutX(1110);
+        place1.setLayoutY(320);
+        placebutton1.setLayoutX(1160);
+        placebutton1.setLayoutY(350);
         place1.setVisible(false);
         placebutton1.setVisible(false);
-
-
+        //==================================================================================================================
+        //=================================================================================================================
+        Label player1Tile=new Label("Player 1 Tiles");
+        Label player2Tile=new Label("Player 2 Tiles");
+        player1Tile.setTranslateY(100);
+        player1Tile.setTranslateX(780);
+        player2Tile.setTranslateY(100);
+        player2Tile.setTranslateX(1040);
+        player1Tile.setFont(Font.font(20));
+        player2Tile.setFont(Font.font(20));
+        player2Tile.setVisible(false);
+        //==================================================================================================================
+        //==================================================================================================================
         selectyourcorporation.setLayoutY(500);
         selectyourcorporation.setLayoutX(500);
         contentVBox.setLayoutX(300);
         contentVBox.setLayoutY(300);
-
         //=============================================================================================================
         //=============================================================================================================
-        //ObservableList<String> names = FXCollections.observableArrayList( "Name :"+gameBoard.getPlayer1().getName(),"Cash : $"+gameBoard.getPlayer1().getMoney(),"Stocks :"+gameBoard.getPlayer1().getHand());
-        //ObservableList<String> names1 = FXCollections.observableArrayList( "Name :"+gameBoard.getPlayer2().getName(),"Cash : $"+gameBoard.getPlayer2().getMoney(),"Stocks :"+gameBoard.getPlayer2().getHand());
-
-
+        ObservableList<String> player1 = FXCollections.observableArrayList( "Name :"+gameBoard.getPlayer1().getName(),"Cash : $"+gameBoard.getPlayer1().getMoney(),"Stocks :"+gameBoard.getPlayer1().getHand());
+        ObservableList<String> player2 = FXCollections.observableArrayList( "Name :"+gameBoard.getPlayer2().getName(),"Cash : $"+gameBoard.getPlayer2().getMoney(),"Stocks :"+gameBoard.getPlayer2().getHand());
         ObservableList<String> names = FXCollections.observableArrayList(gameBoard.getPlayer1().getHand());
         ObservableList<String> names1 = FXCollections.observableArrayList(gameBoard.getPlayer2().getHand());
-
-
+        //==================================================================================================================
+        //==================================================================================================================
+        ListView listView1=new ListView(player1);
+        ListView listView2=new ListView(player2);
+        listView1.setTranslateY(400);
+        listView1.setTranslateX(800);
+        listView1.setMaxSize(500,150);
+        listView2.setTranslateY(400);
+        listView2.setTranslateX(1050);
+        listView2.setMaxSize(500,150);
+        listView1.setStyle("-fx-control-inner-background: green;-fx-background-insets: 0 ");
+        listView2.setStyle("-fx-control-inner-background: black;-fx-background-insets: 0 ");
+        //==================================================================================================================
+        //==================================================================================================================
         ListView<String> listViewPlayer1 = new ListView<String>(names);
         ListView<String> listViewPlayer2 = new ListView<String>(names1);
+        ListView<String> listViewcorporationsize=new ListView<>(corpsize);
+        listViewcorporationsize.setTranslateY(585);
+        listViewcorporationsize.setMaxSize(1000,200);
+        listViewcorporationsize.setStyle("-fx-control-inner-background: dimgray;-fx-background-insets: 0 ");
         listViewPlayer2.setVisible(false);
+        //==================================================================================================================
+        //==================================================================================================================
+        corpsize.addAll("Tower :\t\t\t\t\t\t"+sizetower,"Imperial :\t\t\t\t\t\t"+sizeimperial,"Festival :\t\t\t\t\t\t"+sizefestival,"Worldwide :\t\t\t\t\t"+sizeworldwide,"Sackson :\t\t\t\t\t\t"+sizesackson,"American :\t\t\t\t\t"+sizeamerican,"Continental :\t\t\t\t\t"+sizecontinental);
+        //==================================================================================================================
+        //==================================================================================================================
         placebutton.setOnAction(event -> {
-
+            listView1.setStyle("-fx-control-inner-background: black;-fx-background-insets: 0 ");
+            listView2.setStyle("-fx-control-inner-background: green;-fx-background-insets: 0 ");
+            corpsize.removeAll("Tower :\t\t\t\t\t\t"+sizetower,"Imperial :\t\t\t\t\t\t"+sizeimperial,"Festival :\t\t\t\t\t\t"+sizefestival,"Worldwide :\t\t\t\t\t"+sizeworldwide,"Sackson :\t\t\t\t\t\t"+sizesackson,"American :\t\t\t\t\t"+sizeamerican,"Continental :\t\t\t\t\t"+sizecontinental);
             update();
             updateplayerhand(names,gameBoard.getPlayer1().getHand(),place.getText());
             listViewPlayer1.setVisible(false);
             place.setVisible(false);
             placebutton.setVisible(false);
+            player1Tile.setVisible(false);
             place.clear();
             place1.setVisible(true);
             placebutton1.setVisible(true);
             listViewPlayer2.setVisible(true);
+            player2Tile.setVisible(true);
 
+
+            corpsize.addAll("Tower :\t\t\t\t\t\t"+sizetower,"Imperial :\t\t\t\t\t\t"+sizeimperial,"Festival :\t\t\t\t\t\t"+sizefestival,"Worldwide :\t\t\t\t\t"+sizeworldwide,"Sackson :\t\t\t\t\t\t"+sizesackson,"American :\t\t\t\t\t"+sizeamerican,"Continental :\t\t\t\t\t"+sizecontinental);
         });
-
         placebutton1.setOnAction(event -> {
+            listView1.setStyle("-fx-control-inner-background: green;-fx-background-insets: 0 ");
+            listView2.setStyle("-fx-control-inner-background: black;-fx-background-insets: 0 ");
+            corpsize.removeAll("Tower :\t\t\t\t\t\t"+sizetower,"Imperial :\t\t\t\t\t\t"+sizeimperial,"Festival :\t\t\t\t\t\t"+sizefestival,"Worldwide :\t\t\t\t\t"+sizeworldwide,"Sackson :\t\t\t\t\t\t"+sizesackson,"American :\t\t\t\t\t"+sizeamerican,"Continental :\t\t\t\t\t"+sizecontinental);
             update();
             updateplayerhand(names1,gameBoard.getPlayer2().getHand(),place1.getText());
             listViewPlayer2.setVisible(false);
             place1.setVisible(false);
             placebutton1.setVisible(false);
+            player2Tile.setVisible(false);
             place1.clear();
+            player1Tile.setVisible(true);
             place.setVisible(true);
             placebutton.setVisible(true);
             listViewPlayer1.setVisible(true);
+
+
+            corpsize.addAll("Tower :\t\t\t\t\t\t"+sizetower,"Imperial :\t\t\t\t\t\t"+sizeimperial,"Festival :\t\t\t\t\t\t"+sizefestival,"Worldwide :\t\t\t\t\t"+sizeworldwide,"Sackson :\t\t\t\t\t\t"+sizesackson,"American :\t\t\t\t\t"+sizeamerican,"Continental :\t\t\t\t\t"+sizecontinental);
+
+
+
+
+
+
 
         });
         //=============================================================================================================
         //=============================================================================================================
         listViewPlayer1.setMaxSize(50, 200);
-        listViewPlayer1.setTranslateX(950);
+        listViewPlayer1.setTranslateX(900);
         listViewPlayer1.setTranslateY(100);
+        listViewPlayer1.setStyle("-fx-control-inner-background: green;-fx-background-insets: 0 ");
 
         listViewPlayer2.setMaxSize(50, 200);
-        listViewPlayer2.setTranslateX(950);
+        listViewPlayer2.setTranslateX(1160);
         listViewPlayer2.setTranslateY(100);
+        listViewPlayer2.setStyle("-fx-control-inner-background: green;-fx-background-insets: 0 ");
         //=============================================================================================================
-
-
-        Group group = new Group(gridPane, label, listViewPlayer1, listViewPlayer2, place, placebutton, place1, placebutton1);
+        //==================================================================================================================
+        Label tower=new Label("tower\t\t");
+        tower.setStyle("-fx-background-color: red;");
+        tower.setTranslateY(590);
+        tower.setTranslateX(80);
+        tower.setTextFill(Color.RED);
+        Label imperial=new Label("imperial\t\t");
+        imperial.setStyle("-fx-background-color: orange;");
+        imperial.setTranslateY(612);
+        imperial.setTranslateX(80);
+        imperial.setTextFill(Color.ORANGE);
+        Label continental=new Label("continental\t");
+        continental.setStyle("-fx-background-color: purple;");
+        continental.setTranslateY(728);
+        continental.setTranslateX(80);
+        continental.setTextFill(Color.PURPLE);
+        Label festival=new Label("festival\t\t");
+        festival.setStyle("-fx-background-color: blue;");
+        festival.setTranslateY(635);
+        festival.setTranslateX(80);
+        festival.setTextFill(Color.BLUE);
+        Label sackson=new Label("sackson\t\t");
+        sackson.setStyle("-fx-background-color: yellow;");
+        sackson.setTranslateY(682);
+        sackson.setTranslateX(80);
+        sackson.setTextFill(Color.YELLOW);
+        Label american=new Label("american\t\t");
+        american.setStyle("-fx-background-color: green;");
+        american.setTranslateY(705);
+        american.setTranslateX(80);
+        american.setTextFill(Color.GREEN);
+        Label worldwide=new Label("worldwide\t");
+        worldwide.setStyle("-fx-background-color: teal;");
+        worldwide.setTranslateY(657);
+        worldwide.setTranslateX(80);
+        worldwide.setTextFill(Color.TEAL);
+        //==================================================================================================================
+        //==================================================================================================================
+        Group group = new Group(gridPane,listViewcorporationsize,label, listViewPlayer1, listViewPlayer2, place, placebutton, place1, placebutton1,tower,festival,american,imperial,worldwide,continental,sackson,player1Tile,player2Tile,listView1,listView2);
         Scene scene = new Scene(group);
         scene.setFill(Color.DIMGRAY);
         primaryStage.setScene(scene);
@@ -253,7 +339,6 @@ public class testingboard extends Application {
                         gameBoard.listofwholetilesthatplayed.add(place.getText());
                         gameBoard.integeroflistofwholetilesthatplayed.add(s);
 
-                        System.out.println(gameBoard.check(gameBoard.listofwholetilesthatplayed, place.getText())+" "+place.getText());
 
                         if (gameBoard.check(gameBoard.listofwholetilesthatplayed, place.getText())) {
                             integerArrayList=new ArrayList<>();
@@ -295,41 +380,41 @@ public class testingboard extends Application {
                             if(newList.size()==2){
                                 if(gridPane.getChildren().get(ttt.neghbor1).getStyle().equals("-fx-background-color: gray") && gridPane.getChildren().get(ttt.neghbor2).getStyle().equals("-fx-background-color: gray")){
                                     demo();
-                                if(color.equals("red")){
-                                    towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);
-                                    if(sizetower==0){
-                                        sizetower=sizetower+3;}
-                                    else {sizetower=sizetower+2;}}
-                                if(color.equals("purple")){
-                                    continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);
-                                    if(sizecontinental==0){
-                                        sizecontinental=sizecontinental+3;}
-                                    else {sizecontinental=sizecontinental+2;}}
-                                if(color.equals("yellow")){
-                                    sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);
-                                    if(sizesackson==0){
-                                        sizesackson=sizesackson+3;}
-                                    else {sizesackson=sizesackson+2;}}
-                                if(color.equals("green")){
-                                    americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);
-                                    if(sizeamerican==0){
-                                        sizeamerican=sizeamerican+3;}
-                                    else {sizeamerican=sizeamerican+2;}}
-                                if(color.equals("blue")){
-                                    festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);
-                                    if(sizefestival==0){
-                                        sizefestival=sizefestival+3;}
-                                    else {sizefestival=sizefestival+2;}}
-                                if(color.equals("orange")){
-                                    imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);
-                                    if(sizeimperial==0){
-                                        sizeimperial=sizeimperial+3;}
-                                    else {sizeimperial=sizeimperial+2;}}
-                                if(color.equals("teal")){
-                                    worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);
-                                    if(sizeworldwide==0){
-                                        sizeworldwide=sizeworldwide+3;}
-                                    else {sizeworldwide=sizeworldwide+2;}}
+                                    if(color.equals("red")){
+                                        towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);
+                                        if(sizetower==0){
+                                            sizetower=sizetower+3;}
+                                        else {sizetower=sizetower+2;}}
+                                    if(color.equals("purple")){
+                                        continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);
+                                        if(sizecontinental==0){
+                                            sizecontinental=sizecontinental+3;}
+                                        else {sizecontinental=sizecontinental+2;}}
+                                    if(color.equals("yellow")){
+                                        sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);
+                                        if(sizesackson==0){
+                                            sizesackson=sizesackson+3;}
+                                        else {sizesackson=sizesackson+2;}}
+                                    if(color.equals("green")){
+                                        americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);
+                                        if(sizeamerican==0){
+                                            sizeamerican=sizeamerican+3;}
+                                        else {sizeamerican=sizeamerican+2;}}
+                                    if(color.equals("blue")){
+                                        festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);
+                                        if(sizefestival==0){
+                                            sizefestival=sizefestival+3;}
+                                        else {sizefestival=sizefestival+2;}}
+                                    if(color.equals("orange")){
+                                        imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);
+                                        if(sizeimperial==0){
+                                            sizeimperial=sizeimperial+3;}
+                                        else {sizeimperial=sizeimperial+2;}}
+                                    if(color.equals("teal")){
+                                        worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);
+                                        if(sizeworldwide==0){
+                                            sizeworldwide=sizeworldwide+3;}
+                                        else {sizeworldwide=sizeworldwide+2;}}
 
                                     gridPane.getChildren().get(ttt.neghbor1).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(ttt.neghbor2).setStyle("-fx-background-color:"+color);
@@ -384,11 +469,11 @@ public class testingboard extends Application {
                                             sizeworldwide=sizeworldwide+4;}
                                         else {sizeworldwide=sizeworldwide+3;}}
 
-                                gridPane.getChildren().get(ttt.neghbor1).setStyle("-fx-background-color:"+color);
-                                gridPane.getChildren().get(ttt.neghbor2).setStyle("-fx-background-color:"+color);
-                                gridPane.getChildren().get(ttt.neghbor3).setStyle("-fx-background-color:"+color);
-                                gridPane.getChildren().get(s).setStyle("-fx-background-color:"+color);
-                                integerArrayList.clear();}
+                                    gridPane.getChildren().get(ttt.neghbor1).setStyle("-fx-background-color:"+color);
+                                    gridPane.getChildren().get(ttt.neghbor2).setStyle("-fx-background-color:"+color);
+                                    gridPane.getChildren().get(ttt.neghbor3).setStyle("-fx-background-color:"+color);
+                                    gridPane.getChildren().get(s).setStyle("-fx-background-color:"+color);
+                                    integerArrayList.clear();}
                             }
                             if(newList.size()==4){
                                 if(gridPane.getChildren().get(ttt.neghbor1).getStyle().equals("-fx-background-color: gray") && gridPane.getChildren().get(ttt.neghbor2).getStyle().equals("-fx-background-color: gray") &&gridPane.getChildren().get(ttt.neghbor3).getStyle().equals("-fx-background-color: gray") && gridPane.getChildren().get(ttt.neghbor4).getStyle().equals("-fx-background-color: gray")){
@@ -459,8 +544,6 @@ public class testingboard extends Application {
                     if (gridPane.getChildren().get(s).getAccessibleText().equals(place1.getText())) {
                         gameBoard.listofwholetilesthatplayed.add(place1.getText());
                         gameBoard.integeroflistofwholetilesthatplayed.add(s);
-
-                        System.out.println(gameBoard.check(gameBoard.listofwholetilesthatplayed, place1.getText())+"  "+place1.getText());
 
                         if (gameBoard.check(gameBoard.listofwholetilesthatplayed, place1.getText())) {
                             integerArrayList=new ArrayList<>();
@@ -704,6 +787,21 @@ public class testingboard extends Application {
             }
 
         }
+
+        sizetower=towerintegertiles.size();
+        sizecontinental=continentalintegertiles.size();
+        sizeamerican=americanintegertiles.size();
+        sizeworldwide=worldwideintegertiles.size();
+        sizesackson=sacksonintegertiles.size();
+        sizefestival=festivalintegertiles.size();
+        sizeimperial=imperialintegertiles.size();
+
+
+
+
+
+
+
     }
     public void search() {
         selectedItem = mComboBox.getSelectionModel().getSelectedItem();
@@ -712,9 +810,9 @@ public class testingboard extends Application {
                 color = co.getColor();
             }
 
-            }
-
         }
+
+    }
     private void handleSelection(){
         mComboBox.getItems().remove(selectedItem);
         mComboBox.setOnAction(event -> {
@@ -737,9 +835,9 @@ public class testingboard extends Application {
     public void changecolor(String tile) {
         for (int number : ttt.neighbors(tile)) {
             for(int num: gameBoard.integeroflistofwholetilesthatplayed){
-                    if(num==number){
-                        integerArrayList.add(number);
-                    }
+                if(num==number){
+                    integerArrayList.add(number);
+                }
             }
         }
         System.out.println(integerArrayList+" this is the integer arraylist");
@@ -850,11 +948,11 @@ public class testingboard extends Application {
 
 
 
-public void updateplayerhand(ObservableList<String> list, ArrayList<String> handslist,String tile){
-    String randtile1=gameBoard.drawTile();
-    handslist.remove(tile);
-    handslist.add(randtile1);
-    list.remove(tile);
-    list.add(randtile1);
-}
+    public void updateplayerhand(ObservableList<String> list, ArrayList<String> handslist,String tile){
+        String randtile1=gameBoard.drawTile();
+        handslist.remove(tile);
+        handslist.add(randtile1);
+        list.remove(tile);
+        list.add(randtile1);
+    }
 }
