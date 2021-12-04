@@ -275,7 +275,7 @@ public class Stock_Market {
 
     public void tradeStock(Player p, Corporation defunct, Corporation corp, int numStocks){
         int newStock = numStocks/2;
-
+        
     }
 
     public int checkValue(Corporation c) {
@@ -308,7 +308,7 @@ public class Stock_Market {
             else if(size >= 41){
                 return 1000;
             }
-            else if(c.getName() == "American" || c.getName() == "Festival" || c.getName() == "Worldwide"){
+        else if(c.getName() == "American" || c.getName() == "Festival" || c.getName() == "Worldwide"){
                 if(size == 2){
                     return 300;
                 }
@@ -337,7 +337,7 @@ public class Stock_Market {
                     return 1100;
                 }
             }
-            else if(c.getName() == "Continental" || c.getName() == "Imperial"){
+        else if(c.getName() == "Continental" || c.getName() == "Imperial"){
                 if(size == 2){
                     return 400;
                 }

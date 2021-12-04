@@ -77,7 +77,6 @@ public class Player {
     public Player(String name, int money) {
         this.name = name;
         this.money = money;
-
     }
 
     //Getters and Setters
@@ -115,14 +114,14 @@ public class Player {
 
     public boolean checkTurn() {return turn;}
 
+    public void setTurn(boolean t) {turn = t;}
+
     //Add a tile to the player's hand
     public void addTile(String t){
         if(this.hand == null){
             ArrayList<String> temp = new ArrayList<>();
             temp.add(t);
             this.setHand(temp);
-
-
         }
         else{
             this.hand.add(t);
