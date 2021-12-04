@@ -584,10 +584,52 @@ public class GameBoard {
         return null;
     }
 */
+    public  void startTheGame(){
+        ArrayList<String> handplayer1=new ArrayList<>();
+        handplayer1.add(drawTile());
+        getPlayer1().setHand(handplayer1);
+        ArrayList<String> handplayer2=new ArrayList<>();
+        handplayer2.add(drawTile());
+        getPlayer1().setHand(handplayer2);
+        int ascii1=splitChar(handplayer1.get(0));
+        int ascii2=splitChar(handplayer2.get(0));
+        int Aascii='A';
+        if(ascii1>ascii2){
+            Player temp=player1;
+            Player temp2=player2;
+            player2=temp;
+            player1=temp2;
+        }
+        if(ascii1<ascii2){
+            Player temp=player1;
+            Player temp2=player2;
+            player1=temp;
+            player2=temp2;
+        }
+        if(ascii1==Aascii && ascii2==Aascii ){
+            if(splitNum(handplayer1.get(0))>splitNum(handplayer2.get(0))){
+                Player temp2=player2;
+                Player temp=player1;
+                player1=temp2;
+                player2=temp;
+            }
+            if(splitNum(handplayer1.get(0))<splitNum(handplayer2.get(0))){
+                Player temp=player1;
+                Player temp2=player2;
+                player1=temp;
+                player2=temp2;
+            }
+
+        }
+
+    }
 
     public static void main(String[] args) {
+        GameBoard g=new GameBoard();
+        g.startTheGame();
+        System.out.println(g.getPlayer1().getHand());
 
-        GameBoard gb=new GameBoard();
+
 
 
 

@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import static edu.isu.cs2263.acquire.Stock_Market.tradeStock;
+
 public class Corporation {
     private String name;
     private Integer Size;

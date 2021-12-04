@@ -11,12 +11,12 @@ public class Turn {
     public static int distanceTo1A(String tile){
         return splitNum(tile)-1;
     }
-    public static Integer checkAlphabet(Tile tile){
-        int ascii=tile.getTileAlphabet().charAt(0);
+    public static Integer checkAlphabet(String tile){
+        int ascii=tile.charAt(0);
         return ascii;
     }
-
-    /*public static List<Object>playerSort(Player player1,Player player2){
+/*
+    public static List<Object>playerSort(Player player1,Player player2){
         List<Object> playerSort=new ArrayList<>();
         Pair<String,Integer> playerPair1=new Pair<String, Integer>(player1.getName(),player1.getTileNumber());
         Pair<String,Integer> playerPair2=new Pair<String, Integer>(player2.getName(),player2.getTileNumber());
@@ -44,5 +44,7 @@ public class Turn {
         return playerSort;
 
 
-}*/
+}
+
+ */
 }
