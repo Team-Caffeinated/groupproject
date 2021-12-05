@@ -13,9 +13,18 @@ public class Corporation {
     private Integer Size;
     private String color;
     private List<String> tiles;
+    private ArrayList<Integer> tilesnumber;
 
     public List<String> getTiles() {
         return tiles;
+    }
+
+    public ArrayList<Integer> getTilesnumber() {
+        return tilesnumber;
+    }
+
+    public void setTilesnumber(ArrayList<Integer> tilesnumber) {
+        this.tilesnumber = tilesnumber;
     }
 
     public void setTiles(List<String> tiles) {

@@ -248,7 +248,7 @@ public class GameBoard {
 
 
 
-
+/*
     public boolean check(ArrayList<String> list, String tile){
         for(String value: list){
             if(value.charAt(0) == tile.charAt(0)){
@@ -274,6 +274,53 @@ public class GameBoard {
         return false;
     }
 
+ */
+
+    /*
+    public boolean check(ArrayList<String> list, String tile) {
+        for (String value : list) {
+            if (splitNum(value) == splitNum(tile)) {
+                if (splitChar(value) == splitChar(tile) - 1) {
+                    return true;
+                }
+                if (splitChar(value) == splitChar(tile) + 1) {
+                    return true;
+                }
+            }
+            if (splitChar(value) == splitChar(tile)) {
+                if (splitNum(value) == splitNum(tile) - 1) {
+                    return true;
+                }
+                if (splitNum(value) == splitNum(tile) + 1) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+     */
+    public boolean check(ArrayList<String> list, String tile) {
+        for (String value : list) {
+            if (splitNum(value) == splitNum(tile)) {
+                if (splitChar(value) == splitChar(tile) - 1) {
+                    return true;
+                }
+                if (splitChar(value) == splitChar(tile) + 1) {
+                    return true;
+                }
+            }
+            if (splitChar(value) == splitChar(tile)) {
+                if (splitNum(value) == splitNum(tile) - 1) {
+                    return true;
+                }
+                if (splitNum(value) == splitNum(tile) + 1) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
 
     public void checkleft(ArrayList<String> list, String tile) {
@@ -522,12 +569,37 @@ public class GameBoard {
     }
 */
 
+///===============================================================================================================================
+
+
+    public void merge(Corporation one, Corporation two, String tile) {
+        Integer onesize = one.getSize();
+        Integer twosize = two.getSize();
+        if (onesize > twosize) {
+            two.resetSize();
+            one.increaseSize(twosize + 1, tile);
+            List<String> newTiles = new ArrayList<>();
+            newTiles.addAll(one.getTiles());
+            newTiles.addAll(two.getTiles());
+            one.setTiles(newTiles);
+            two.setTiles(null);
+        } else if (twosize > onesize) {
+            one.resetSize();
+            two.increaseSize(onesize + 1, tile);
+            List<String> newTiles = new ArrayList<>();
+            newTiles.addAll(one.getTiles());
+            newTiles.addAll(two.getTiles());
+            two.setTiles(newTiles);
+            one.setTiles(null);
+        }
+        else{
+
+        }
+    }
+
     public static void main(String[] args) {
-
-        GameBoard gb=new GameBoard();
-        System.out.println(gb.drawTile());
-
-
+        System.out.println(splitChar("9A"));
+        System.out.println(splitNum("9A"));
     }
 
 

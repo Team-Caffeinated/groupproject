@@ -82,12 +82,16 @@ public class TestBoard extends Application {
         //=============================================================================================================
         // making sample hand for players
 
+
         hand.add(gameBoard.drawTile());
         hand.add(gameBoard.drawTile());
         hand.add(gameBoard.drawTile());
         hand.add(gameBoard.drawTile());
         hand.add(gameBoard.drawTile());
         hand.add(gameBoard.drawTile());
+
+
+        //hand.add("10A");
         gameBoard.getPlayer1().setHand(hand);
 
 
@@ -97,6 +101,9 @@ public class TestBoard extends Application {
         hand1.add(gameBoard.drawTile());
         hand1.add(gameBoard.drawTile());
         hand1.add(gameBoard.drawTile());
+
+
+        //hand1.add("9A");
         gameBoard.getPlayer2().setHand(hand1);
 
 
