@@ -175,9 +175,9 @@ public class Stock_Market {
         }
     }
 
-    public void sellStock(Player p, String corpName, int size) {
+    public void sellStock(Player p, String c, int size) {
         int corpStockSize;
-        int val = checkValue(corpName, size);
+        int val = checkValue(c, size);
         int totalVal = val * size;
         if (c == "Tower") {
             if (p.getTowerStock() > 0) {
