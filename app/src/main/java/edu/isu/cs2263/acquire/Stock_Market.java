@@ -275,6 +275,7 @@ public class Stock_Market {
 
     public void tradeStock(Player p, Corporation defunct, Corporation corp, int numStocks){
         int newStock = numStocks/2;
+
         
     }
 
