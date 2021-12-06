@@ -29,6 +29,7 @@ import java.util.stream.Collectors;
 
 
 public class TestBoard extends Application {
+    public Stock_Market stonks = new Stock_Market();
     Label corppick=new Label();
     Button optionforpickacorp1=new Button();
     Button optionforpickacorp2=new Button();
@@ -298,7 +299,7 @@ public class TestBoard extends Application {
                 player2Tile.setVisible(true);
                 corpsize.addAll("Tower :\t\t\t\t\t\t" + sizetower, "Imperial :\t\t\t\t\t\t" + sizeimperial, "Festival :\t\t\t\t\t\t" + sizefestival, "Worldwide :\t\t\t\t\t" + sizeworldwide, "Sackson :\t\t\t\t\t\t" + sizesackson, "American :\t\t\t\t\t" + sizeamerican, "Continental :\t\t\t\t\t" + sizecontinental);
             }
-            buyselltrade.setOnAction(event1 -> {buyselltradestock1();});
+            buyselltrade.setOnAction(event1 -> {buyselltradestock2();});
         });
         placebutton1.setOnAction(event -> {
             if(!gb.getPlayer2().getHand().contains(place1.getText().toUpperCase()))
@@ -330,7 +331,7 @@ public class TestBoard extends Application {
 
             }
 
-            buyselltrade.setOnAction(event1 -> {buyselltradestock2();});
+            buyselltrade.setOnAction(event1 -> {buyselltradestock1();});
 
 
 
@@ -425,13 +426,13 @@ public class TestBoard extends Application {
                                     System.out.println(color);
                                     gridPane.getChildren().get(s).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(newList.get(0)).setStyle("-fx-background-color:"+color);
-                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(newList.get(0));}
-                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(newList.get(0));}
-                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(newList.get(0));}
-                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(newList.get(0));}
-                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(newList.get(0));}
-                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(newList.get(0));}
-                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(newList.get(0));}}
+                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(newList.get(0));gb.getPlayer1().setTowerStock(1);}
+                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(newList.get(0));gb.getPlayer1().setSaxonStock(1);}
+                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(newList.get(0));gb.getPlayer1().setWorldwideStock(1);}
+                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(newList.get(0));gb.getPlayer1().setImperialStock(1);}
+                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(newList.get(0));gb.getPlayer1().setAmericanStock(1);}
+                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(newList.get(0));gb.getPlayer1().setContinentalStock(1);}
+                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(newList.get(0));gb.getPlayer1().setFestivalStock(1);}}
                                 else {
                                     gridPane.getChildren().get(s).setStyle(gridPane.getChildren().get(newList.get(0)).getStyle());
                                     if(gridPane.getChildren().get(newList.get(0)).getStyle().equals("-fx-background-color:red")){towerintegertiles.add(s);}
@@ -454,13 +455,13 @@ public class TestBoard extends Application {
                                     gridPane.getChildren().get(s).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(ttt.neghbor1).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(ttt.neghbor2).setStyle("-fx-background-color:"+color);
-                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);}
-                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);}
-                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);}
-                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);}
-                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);}
-                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);}
-                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);}
+                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);gb.getPlayer1().setTowerStock(1);}
+                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);gb.getPlayer1().setSaxonStock(1);}
+                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);gb.getPlayer1().setWorldwideStock(1);}
+                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);gb.getPlayer1().setImperialStock(1);}
+                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);gb.getPlayer1().setAmericanStock(1);}
+                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);gb.getPlayer1().setContinentalStock(1);}
+                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);gb.getPlayer1().setFestivalStock(1);}
                                 }
                                 else if(gridPane.getChildren().get(ttt.neghbor1).getStyle().equals("-fx-background-color: gray") && !gridPane.getChildren().get(ttt.neghbor2).getStyle().equals("-fx-background-color: gray")){
                                     gridPane.getChildren().get(s).setStyle(gridPane.getChildren().get(ttt.neghbor2).getStyle());
@@ -506,13 +507,13 @@ public class TestBoard extends Application {
                                     gridPane.getChildren().get(ttt.neghbor1).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(ttt.neghbor2).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(ttt.neghbor3).setStyle("-fx-background-color:"+color);
-                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);towerintegertiles.add(ttt.neghbor3);}
-                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);sacksonintegertiles.add(ttt.neghbor3);}
-                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);worldwideintegertiles.add(ttt.neghbor3);}
-                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);imperialintegertiles.add(ttt.neghbor3);}
-                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);americanintegertiles.add(ttt.neghbor3);}
-                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);continentalintegertiles.add(ttt.neghbor3);}
-                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);festivalintegertiles.add(ttt.neghbor3);}
+                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);towerintegertiles.add(ttt.neghbor3);gb.getPlayer1().setTowerStock(1);}
+                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);sacksonintegertiles.add(ttt.neghbor3);gb.getPlayer1().setSaxonStock(1);}
+                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);worldwideintegertiles.add(ttt.neghbor3);gb.getPlayer1().setWorldwideStock(1);}
+                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);imperialintegertiles.add(ttt.neghbor3);gb.getPlayer1().setImperialStock(1);}
+                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);americanintegertiles.add(ttt.neghbor3);gb.getPlayer1().setAmericanStock(1);}
+                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);continentalintegertiles.add(ttt.neghbor3);gb.getPlayer1().setContinentalStock(1);}
+                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);festivalintegertiles.add(ttt.neghbor3);gb.getPlayer1().setFestivalStock(1);}
 
                                 }
                                 //======================================================================================
@@ -588,7 +589,7 @@ public class TestBoard extends Application {
                                 else if(imperialintegertiles.contains(ttt.neghbor1) && imperialintegertiles.contains(ttt.neghbor2) && gridPane.getChildren().get(ttt.neghbor3).getStyle().equals("-fx-background-color: gray")){gridPane.getChildren().get(s).setStyle("-fx-background-color: orange");gridPane.getChildren().get(ttt.neghbor3).setStyle("-fx-background-color: orange");imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor3);}
                                 else if(imperialintegertiles.contains(ttt.neghbor1) && imperialintegertiles.contains(ttt.neghbor3)&& gridPane.getChildren().get(ttt.neghbor2).getStyle().equals("-fx-background-color: gray")){gridPane.getChildren().get(s).setStyle("-fx-background-color: orange");gridPane.getChildren().get(ttt.neghbor2).setStyle("-fx-background-color: orange");imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor2);}
                                 else if(imperialintegertiles.contains(ttt.neghbor2) && imperialintegertiles.contains(ttt.neghbor3)&& gridPane.getChildren().get(ttt.neghbor1).getStyle().equals("-fx-background-color: gray")){gridPane.getChildren().get(s).setStyle("-fx-background-color: orange");gridPane.getChildren().get(ttt.neghbor1).setStyle("-fx-background-color: orange");imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);}
-
+                                else{merge3(newList,s);}
                             }
                             if(newList.size()==4){
                                 setneighbor(newList);
@@ -599,13 +600,13 @@ public class TestBoard extends Application {
                                     gridPane.getChildren().get(ttt.neghbor2).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(ttt.neghbor3).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(ttt.neghbor4).setStyle("-fx-background-color:"+color);
-                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);towerintegertiles.add(ttt.neghbor3);towerintegertiles.add(ttt.neghbor4);}
-                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);sacksonintegertiles.add(ttt.neghbor3);sacksonintegertiles.add(ttt.neghbor4);}
-                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);worldwideintegertiles.add(ttt.neghbor3);worldwideintegertiles.add(ttt.neghbor4);}
-                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);imperialintegertiles.add(ttt.neghbor3);imperialintegertiles.add(ttt.neghbor4);}
-                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);americanintegertiles.add(ttt.neghbor3);americanintegertiles.add(ttt.neghbor4);}
-                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);continentalintegertiles.add(ttt.neghbor3);continentalintegertiles.add(ttt.neghbor4);}
-                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);festivalintegertiles.add(ttt.neghbor3);festivalintegertiles.add(ttt.neghbor4);}
+                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);towerintegertiles.add(ttt.neghbor3);towerintegertiles.add(ttt.neghbor4);gb.getPlayer1().setTowerStock(1);}
+                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);sacksonintegertiles.add(ttt.neghbor3);sacksonintegertiles.add(ttt.neghbor4);gb.getPlayer1().setSaxonStock(1);}
+                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);worldwideintegertiles.add(ttt.neghbor3);worldwideintegertiles.add(ttt.neghbor4);gb.getPlayer1().setWorldwideStock(1);}
+                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);imperialintegertiles.add(ttt.neghbor3);imperialintegertiles.add(ttt.neghbor4);gb.getPlayer1().setImperialStock(1);}
+                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);americanintegertiles.add(ttt.neghbor3);americanintegertiles.add(ttt.neghbor4);gb.getPlayer1().setAmericanStock(1);}
+                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);continentalintegertiles.add(ttt.neghbor3);continentalintegertiles.add(ttt.neghbor4);gb.getPlayer1().setContinentalStock(1);}
+                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);festivalintegertiles.add(ttt.neghbor3);festivalintegertiles.add(ttt.neghbor4);gb.getPlayer1().setFestivalStock(1);}
 
                                 }
                                 else if(gridPane.getChildren().get(ttt.neghbor1).getStyle().equals("-fx-background-color: gray") && gridPane.getChildren().get(ttt.neghbor2).getStyle().equals("-fx-background-color: gray") && gridPane.getChildren().get(ttt.neghbor3).getStyle().equals("-fx-background-color: gray")&&!gridPane.getChildren().get(ttt.neghbor4).getStyle().equals("-fx-background-color: gray")){
@@ -749,7 +750,7 @@ public class TestBoard extends Application {
                                 else if(worldwideintegertiles.contains(ttt.neghbor1) && worldwideintegertiles.contains(ttt.neghbor2) && worldwideintegertiles.contains(ttt.neghbor4)&& gridPane.getChildren().get(ttt.neghbor3).getStyle().equals("-fx-background-color: gray")){gridPane.getChildren().get(s).setStyle("-fx-background-color: teal");gridPane.getChildren().get(ttt.neghbor3).setStyle("-fx-background-color: teal");worldwideintegertiles.add(ttt.neghbor4);}
                                 else if(worldwideintegertiles.contains(ttt.neghbor2) && worldwideintegertiles.contains(ttt.neghbor3) && worldwideintegertiles.contains(ttt.neghbor4)&& gridPane.getChildren().get(ttt.neghbor1).getStyle().equals("-fx-background-color: gray")){gridPane.getChildren().get(s).setStyle("-fx-background-color: teal");gridPane.getChildren().get(ttt.neghbor1).setStyle("-fx-background-color: teal");worldwideintegertiles.add(ttt.neghbor1);}
                                 else if(worldwideintegertiles.contains(ttt.neghbor1) && worldwideintegertiles.contains(ttt.neghbor3) && worldwideintegertiles.contains(ttt.neghbor4)&& gridPane.getChildren().get(ttt.neghbor2).getStyle().equals("-fx-background-color: gray")){gridPane.getChildren().get(s).setStyle("-fx-background-color: teal");gridPane.getChildren().get(ttt.neghbor2).setStyle("-fx-background-color: teal");worldwideintegertiles.add(ttt.neghbor2);}
-
+                                else{merge4(newList,s);}
 
                             }
                         }
@@ -778,13 +779,13 @@ public class TestBoard extends Application {
                                     demo();
                                     gridPane.getChildren().get(s).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(newList.get(0)).setStyle("-fx-background-color:"+color);
-                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(newList.get(0));}
-                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(newList.get(0));}
-                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(newList.get(0));}
-                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(newList.get(0));}
-                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(newList.get(0));}
-                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(newList.get(0));}
-                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(newList.get(0));}}
+                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(newList.get(0));gb.getPlayer2().setTowerStock(1);}
+                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(newList.get(0));gb.getPlayer2().setSaxonStock(1);}
+                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(newList.get(0));gb.getPlayer2().setWorldwideStock(1);}
+                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(newList.get(0));gb.getPlayer2().setImperialStock(1);}
+                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(newList.get(0));gb.getPlayer2().setAmericanStock(1);}
+                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(newList.get(0));gb.getPlayer2().setContinentalStock(1);}
+                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(newList.get(0));gb.getPlayer2().setFestivalStock(1);}}
                                 else {
                                     gridPane.getChildren().get(s).setStyle(gridPane.getChildren().get(newList.get(0)).getStyle());
                                     if(gridPane.getChildren().get(newList.get(0)).getStyle().equals("-fx-background-color:red")){towerintegertiles.add(s);;}
@@ -805,13 +806,13 @@ public class TestBoard extends Application {
                                     gridPane.getChildren().get(s).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(ttt.neghbor1).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(ttt.neghbor2).setStyle("-fx-background-color:"+color);
-                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);}
-                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);}
-                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);}
-                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);}
-                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);}
-                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);}
-                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);}
+                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);gb.getPlayer2().setTowerStock(1);}
+                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);gb.getPlayer2().setSaxonStock(1);}
+                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);gb.getPlayer2().setWorldwideStock(1);}
+                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);gb.getPlayer2().setImperialStock(1);}
+                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);gb.getPlayer2().setAmericanStock(1);}
+                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);gb.getPlayer2().setContinentalStock(1);}
+                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);gb.getPlayer2().setFestivalStock(1);}
                                 }
                                 else if(gridPane.getChildren().get(ttt.neghbor1).getStyle().equals("-fx-background-color: gray") && !gridPane.getChildren().get(ttt.neghbor2).getStyle().equals("-fx-background-color: gray")){
                                     gridPane.getChildren().get(s).setStyle(gridPane.getChildren().get(ttt.neghbor2).getStyle());
@@ -858,13 +859,13 @@ public class TestBoard extends Application {
                                     gridPane.getChildren().get(ttt.neghbor1).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(ttt.neghbor2).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(ttt.neghbor3).setStyle("-fx-background-color:"+color);
-                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);towerintegertiles.add(ttt.neghbor3);}
-                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);sacksonintegertiles.add(ttt.neghbor3);}
-                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);worldwideintegertiles.add(ttt.neghbor3);}
-                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);imperialintegertiles.add(ttt.neghbor3);}
-                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);americanintegertiles.add(ttt.neghbor3);}
-                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);continentalintegertiles.add(ttt.neghbor3);}
-                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);festivalintegertiles.add(ttt.neghbor3);}
+                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);towerintegertiles.add(ttt.neghbor3);gb.getPlayer2().setTowerStock(1);}
+                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);sacksonintegertiles.add(ttt.neghbor3);gb.getPlayer2().setSaxonStock(1);}
+                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);worldwideintegertiles.add(ttt.neghbor3);gb.getPlayer2().setWorldwideStock(1);}
+                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);imperialintegertiles.add(ttt.neghbor3);gb.getPlayer2().setImperialStock(1);}
+                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);americanintegertiles.add(ttt.neghbor3);gb.getPlayer2().setAmericanStock(1);}
+                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);continentalintegertiles.add(ttt.neghbor3);gb.getPlayer2().setContinentalStock(1);}
+                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);festivalintegertiles.add(ttt.neghbor3);gb.getPlayer2().setFestivalStock(1);}
 
                                 }
                                 //======================================================================================
@@ -953,13 +954,13 @@ public class TestBoard extends Application {
                                     gridPane.getChildren().get(ttt.neghbor2).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(ttt.neghbor3).setStyle("-fx-background-color:"+color);
                                     gridPane.getChildren().get(ttt.neghbor4).setStyle("-fx-background-color:"+color);
-                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);towerintegertiles.add(ttt.neghbor3);towerintegertiles.add(ttt.neghbor4);}
-                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);sacksonintegertiles.add(ttt.neghbor3);sacksonintegertiles.add(ttt.neghbor4);}
-                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);worldwideintegertiles.add(ttt.neghbor3);worldwideintegertiles.add(ttt.neghbor4);}
-                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);imperialintegertiles.add(ttt.neghbor3);imperialintegertiles.add(ttt.neghbor4);}
-                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);americanintegertiles.add(ttt.neghbor3);americanintegertiles.add(ttt.neghbor4);}
-                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);continentalintegertiles.add(ttt.neghbor3);continentalintegertiles.add(ttt.neghbor4);}
-                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);festivalintegertiles.add(ttt.neghbor3);festivalintegertiles.add(ttt.neghbor4);}
+                                    if(color.equals("red")){towerintegertiles.add(s);towerintegertiles.add(ttt.neghbor1);towerintegertiles.add(ttt.neghbor2);towerintegertiles.add(ttt.neghbor3);towerintegertiles.add(ttt.neghbor4);gb.getPlayer2().setTowerStock(1);}
+                                    if(color.equals("yellow")){sacksonintegertiles.add(s);sacksonintegertiles.add(ttt.neghbor1);sacksonintegertiles.add(ttt.neghbor2);sacksonintegertiles.add(ttt.neghbor3);sacksonintegertiles.add(ttt.neghbor4);gb.getPlayer2().setSaxonStock(1);}
+                                    if(color.equals("teal")){worldwideintegertiles.add(s);worldwideintegertiles.add(ttt.neghbor1);worldwideintegertiles.add(ttt.neghbor2);worldwideintegertiles.add(ttt.neghbor3);worldwideintegertiles.add(ttt.neghbor4);gb.getPlayer2().setWorldwideStock(1);}
+                                    if(color.equals("orange")){imperialintegertiles.add(s);imperialintegertiles.add(ttt.neghbor1);imperialintegertiles.add(ttt.neghbor2);imperialintegertiles.add(ttt.neghbor3);imperialintegertiles.add(ttt.neghbor4);gb.getPlayer2().setImperialStock(1);}
+                                    if(color.equals("green")){americanintegertiles.add(s);americanintegertiles.add(ttt.neghbor1);americanintegertiles.add(ttt.neghbor2);americanintegertiles.add(ttt.neghbor3);americanintegertiles.add(ttt.neghbor4);gb.getPlayer2().setAmericanStock(1);}
+                                    if(color.equals("purple")){continentalintegertiles.add(s);continentalintegertiles.add(ttt.neghbor1);continentalintegertiles.add(ttt.neghbor2);continentalintegertiles.add(ttt.neghbor3);continentalintegertiles.add(ttt.neghbor4);gb.getPlayer2().setContinentalStock(1);}
+                                    if(color.equals("blue")){festivalintegertiles.add(s);festivalintegertiles.add(ttt.neghbor1);festivalintegertiles.add(ttt.neghbor2);festivalintegertiles.add(ttt.neghbor3);festivalintegertiles.add(ttt.neghbor4);gb.getPlayer2().setFestivalStock(1);}
 
                                 }
                                 else if(gridPane.getChildren().get(ttt.neghbor1).getStyle().equals("-fx-background-color: gray") && gridPane.getChildren().get(ttt.neghbor2).getStyle().equals("-fx-background-color: gray") && gridPane.getChildren().get(ttt.neghbor3).getStyle().equals("-fx-background-color: gray")&&!gridPane.getChildren().get(ttt.neghbor4).getStyle().equals("-fx-background-color: gray")){
@@ -1376,26 +1377,6 @@ public class TestBoard extends Application {
 
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public List<Integer> checktilemembership(Integer tile){
         if(towerintegertiles.contains(tile)){return towerintegertiles;}
         if(festivalintegertiles.contains(tile)){return festivalintegertiles;}
@@ -1434,7 +1415,7 @@ public class TestBoard extends Application {
 
         }
         if(checktilemembership(ttt.neghbor1).size()<checktilemembership(ttt.neghbor2).size()){
-            gridPane.getChildren().get(tilenumber).setStyle(gridPane.getChildren().get(ttt.neghbor1).getStyle());
+            gridPane.getChildren().get(tilenumber).setStyle(gridPane.getChildren().get(ttt.neghbor2).getStyle());
             checktilemembership(ttt.neghbor2).addAll(checktilemembership(ttt.neghbor1));
             checktilemembership(ttt.neghbor2).add(tilenumber);
             for(Integer num:checktilemembership(ttt.neghbor1)){
@@ -1913,7 +1894,7 @@ public class TestBoard extends Application {
         Spinner<String> name=new Spinner<>();
         SpinnerValueFactory<String> valueFactory=new SpinnerValueFactory.ListSpinnerValueFactory<>(corps);
         name.setValueFactory(valueFactory);
-        Spinner<Integer> number=new Spinner<>(0,10,0);
+        Spinner<Integer> number=new Spinner<>(0,3,0);
         VBox buyvbox=new VBox();
         buyvbox.getChildren().addAll(buy,stockname,name,stocknumber,number);
         buyvbox.getChildren().get(0).setTranslateY(200);
@@ -1926,6 +1907,42 @@ public class TestBoard extends Application {
 
         buy.setOnAction(event -> {
             //new Stock_Market().buyStock(gb.getPlayer1(),name.getValue());
+            if(name.getValue() == "Tower"){
+            stonks.buyStock(gb.getPlayer1(), name.getValue(), gb.tower.getSize(), number.getValue());
+            player1towersize.setText(gb.tower.getSize().toString());
+            info.add(player1towersize,1,1);
+            }
+            else if(name.getValue() == "Festival"){
+                stonks.buyStock(gb.getPlayer1(), name.getValue(), gb.festival.getSize(), number.getValue());
+                player1towersize.setText(gb.festival.getSize().toString());
+                info.add(player1towersize,2,1);
+            }
+            else if(name.getValue() == "Sackson"){
+                stonks.buyStock(gb.getPlayer1(), name.getValue(), gb.sackson.getSize(), number.getValue());
+                player1towersize.setText(gb.sackson.getSize().toString());
+                info.add(player1towersize,6,1);
+                }
+            else if(name.getValue() == "Worldwide"){
+                stonks.buyStock(gb.getPlayer1(), name.getValue(), gb.worldwide.getSize(), number.getValue());
+                player1towersize.setText(gb.worldwide.getSize().toString());
+                info.add(player1towersize,7,1);
+                }
+            else if(name.getValue() == "Imperial"){
+                stonks.buyStock(gb.getPlayer1(), name.getValue(), gb.imperial.getSize(), number.getValue());
+                player1towersize.setText(gb.imperial.getSize().toString());
+                info.add(player1towersize,3,1);
+                }
+            else if(name.getValue() == "American"){
+                stonks.buyStock(gb.getPlayer1(), name.getValue(), gb.american.getSize(), number.getValue());
+                player1towersize.setText(gb.american.getSize().toString());
+                info.add(player1towersize,5,1);
+              }
+            else if(name.getValue() == "Continental"){
+                stonks.buyStock(gb.getPlayer1(), name.getValue(), gb.continental.getSize(), number.getValue());
+                player1towersize.setText(gb.continental.getSize().toString());
+                info.add(player1towersize,4,1);
+              }
+            primaryStage.close();
         });
 
 
@@ -1954,7 +1971,42 @@ public class TestBoard extends Application {
 
 
         sell.setOnAction(event -> {
-            //new Stock_Market().sellStock(gb.getPlayer1(),name.getValue());
+            if(name.getValue() == "Tower"){
+                stonks.sellStock(gb.getPlayer1(), name.getValue(), gb.tower.getSize(), number.getValue());
+                player1towersize.setText(gb.tower.getSize().toString());
+                info.add(player1towersize,1,1);
+            }
+            else if(name.getValue() == "Festival"){
+                stonks.sellStock(gb.getPlayer1(), name.getValue(), gb.festival.getSize(), number.getValue());
+                player1towersize.setText(gb.festival.getSize().toString());
+                info.add(player1towersize,2,1);
+            }
+            else if(name.getValue() == "Sackson"){
+                stonks.sellStock(gb.getPlayer1(), name.getValue(), gb.sackson.getSize(), number.getValue());
+                player1towersize.setText(gb.sackson.getSize().toString());
+                info.add(player1towersize,6,1);
+            }
+            else if(name.getValue() == "Worldwide"){
+                stonks.sellStock(gb.getPlayer1(), name.getValue(), gb.worldwide.getSize(), number.getValue());
+                player1towersize.setText(gb.worldwide.getSize().toString());
+                info.add(player1towersize,7,1);
+            }
+            else if(name.getValue() == "Imperial"){
+                stonks.sellStock(gb.getPlayer1(), name.getValue(), gb.imperial.getSize(), number.getValue());
+                player1towersize.setText(gb.imperial.getSize().toString());
+                info.add(player1towersize,3,1);
+            }
+            else if(name.getValue() == "American"){
+                stonks.sellStock(gb.getPlayer1(), name.getValue(), gb.american.getSize(), number.getValue());
+                player1towersize.setText(gb.american.getSize().toString());
+                info.add(player1towersize,5,1);
+            }
+            else if(name.getValue() == "Continental"){
+                stonks.sellStock(gb.getPlayer1(), name.getValue(), gb.continental.getSize(), number.getValue());
+                player1towersize.setText(gb.continental.getSize().toString());
+                info.add(player1towersize,4,1);
+            }
+            primaryStage.close();
         });
 
 
@@ -2056,10 +2108,43 @@ public class TestBoard extends Application {
         buyvbox.getChildren().get(4).setTranslateY(30);
         tabPane.getTabs().add(tabA);
         tabA.setContent(buyvbox);
-
-
         buy.setOnAction(event -> {
-            //new Stock_Market().buyStock(gb.getPlayer1(),name.getValue());
+            if(name.getValue() == "Tower"){
+                stonks.buyStock(gb.getPlayer2(), name.getValue(), gb.tower.getSize(), number.getValue());
+                player2towersize.setText(gb.tower.getSize().toString());
+                info.add(player2towersize,1,2);
+            }
+            else if(name.getValue() == "Festival"){
+                stonks.buyStock(gb.getPlayer2(), name.getValue(), gb.festival.getSize(), number.getValue());
+                player2towersize.setText(gb.festival.getSize().toString());
+                info.add(player2towersize,2,2);
+            }
+            else if(name.getValue() == "Sackson"){
+                stonks.buyStock(gb.getPlayer2(), name.getValue(), gb.sackson.getSize(), number.getValue());
+                player2towersize.setText(gb.sackson.getSize().toString());
+                info.add(player2towersize,6,2);
+            }
+            else if(name.getValue() == "Worldwide"){
+                stonks.buyStock(gb.getPlayer2(), name.getValue(), gb.worldwide.getSize(), number.getValue());
+                player2towersize.setText(gb.worldwide.getSize().toString());
+                info.add(player2towersize,7,1);
+            }
+            else if(name.getValue() == "Imperial"){
+                stonks.buyStock(gb.getPlayer2(), name.getValue(), gb.imperial.getSize(), number.getValue());
+                player2towersize.setText(gb.imperial.getSize().toString());
+                info.add(player2towersize,3,1);
+            }
+            else if(name.getValue() == "American"){
+                stonks.buyStock(gb.getPlayer2(), name.getValue(), gb.american.getSize(), number.getValue());
+                player2towersize.setText(gb.american.getSize().toString());
+                info.add(player2towersize,5,1);
+            }
+            else if(name.getValue() == "Continental"){
+                stonks.buyStock(gb.getPlayer2(), name.getValue(), gb.continental.getSize(), number.getValue());
+                player2towersize.setText(gb.continental.getSize().toString());
+                info.add(player2towersize,4,1);
+            }
+            primaryStage.close();
         });
 
 
@@ -2088,7 +2173,42 @@ public class TestBoard extends Application {
 
 
         sell.setOnAction(event -> {
-            //new Stock_Market().sellStock(gb.getPlayer1(),name.getValue());
+            if(name.getValue() == "Tower"){
+                stonks.sellStock(gb.getPlayer2(), name.getValue(), gb.tower.getSize(), number.getValue());
+                player2towersize.setText(gb.tower.getSize().toString());
+                info.add(player2towersize,1,2);
+            }
+            else if(name.getValue() == "Festival"){
+                stonks.sellStock(gb.getPlayer2(), name.getValue(), gb.festival.getSize(), number.getValue());
+                player2towersize.setText(gb.festival.getSize().toString());
+                info.add(player2towersize,2,2);
+            }
+            else if(name.getValue() == "Sackson"){
+                stonks.sellStock(gb.getPlayer2(), name.getValue(), gb.sackson.getSize(), number.getValue());
+                player2towersize.setText(gb.sackson.getSize().toString());
+                info.add(player2towersize,6,2);
+            }
+            else if(name.getValue() == "Worldwide"){
+                stonks.sellStock(gb.getPlayer2(), name.getValue(), gb.worldwide.getSize(), number.getValue());
+                player2towersize.setText(gb.worldwide.getSize().toString());
+                info.add(player2towersize,7,1);
+            }
+            else if(name.getValue() == "Imperial"){
+                stonks.sellStock(gb.getPlayer2(), name.getValue(), gb.imperial.getSize(), number.getValue());
+                player2towersize.setText(gb.imperial.getSize().toString());
+                info.add(player2towersize,3,1);
+            }
+            else if(name.getValue() == "American"){
+                stonks.sellStock(gb.getPlayer2(), name.getValue(), gb.american.getSize(), number.getValue());
+                player2towersize.setText(gb.american.getSize().toString());
+                info.add(player2towersize,5,1);
+            }
+            else if(name.getValue() == "Continental"){
+                stonks.sellStock(gb.getPlayer2(), name.getValue(), gb.continental.getSize(), number.getValue());
+                player2towersize.setText(gb.continental.getSize().toString());
+                info.add(player2towersize,4,1);
+            }
+            primaryStage.close();
         });
 
 

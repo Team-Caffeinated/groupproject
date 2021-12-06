@@ -107,10 +107,11 @@ public class Stock_Market {
     }
 
     //Methods
-    public void buyStock(Player p, String corpName, int corpSize) {
+    public void buyStock(Player p, String corpName, int corpSize, int times) {
         int corpStockSize;
         int val = checkValue(corpName, corpSize);
         int totalVal = val * corpSize;
+        for(int i = 0; i < times; i++){
         if (p.getMoney() >= totalVal) {
             p.removeMoney(val);
             if (corpName == "Saxon") {
@@ -172,13 +173,15 @@ public class Stock_Market {
             }
         } else {
             System.out.println("Player does not have enough money to purchase that stock");
-        }
+        }}
+
     }
 
-    public void sellStock(Player p, String c, int size) {
+    public void sellStock(Player p, String c, int size, int times) {
         int corpStockSize;
         int val = checkValue(c, size);
         int totalVal = val * size;
+        for(int i = 0; i < times; i++){
         if (c == "Tower") {
             if (p.getTowerStock() > 0) {
                 corpStockSize = p.getTowerStock() - 1;
@@ -243,7 +246,7 @@ public class Stock_Market {
                 System.out.println("Player has no Imperial stock to sell");
             }
         }
-    }
+    }}
 
     public void tradeStock(Player p, Corporation defunct, Corporation corp, int numStocks) {
         int newStock = numStocks / 2;
@@ -550,4 +553,3 @@ public class Stock_Market {
         }
     }
 }
-
