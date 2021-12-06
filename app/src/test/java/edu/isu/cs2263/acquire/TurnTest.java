@@ -12,7 +12,8 @@ public class TurnTest {
     @Test
     public void testDistanceTo1A(){
         Tile tiles = new Tile();
-        assertEquals(1, distanceTo1A("1A"));
+
+        assertEquals(0, distanceTo1A("1A"));
     }
 
 

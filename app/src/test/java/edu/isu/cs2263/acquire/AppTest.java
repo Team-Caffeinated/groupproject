@@ -13,8 +13,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class AppTest {
     public static void main(String[] args){
-        JUnitTestRunner junit = new JUnitTestRunner();
 
-        //junit.run(CorporationTest.class);
     }
 }

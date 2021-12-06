@@ -116,7 +116,7 @@ public class GameBoard {
         return x;
     }
 
-  /* public void detectAdjacency(String tile, List<String> tiles) {
+   public void detectAdjacency(String tile, List<String> tiles) {
         Corporation adjacentCorp1 = null;
         Corporation adjacentCorp2 = null;
         Corporation adjacentCorp3 = null;
@@ -204,9 +204,9 @@ public class GameBoard {
         else {
 
         }
-    }*/
+    }
 
-    /*public static boolean checkRight(int tileNum, int checkedTileNum) {
+    public static boolean checkRight(int tileNum, int checkedTileNum) {
         if (checkedTileNum == (tileNum + 1)) {
             return true;
         } else {
@@ -241,7 +241,7 @@ public class GameBoard {
         }
 
     }
-*/
+
     //======================================================================================================================
     public ArrayList<String> listofwholetilesthatplayed = new ArrayList<>();
     public ArrayList<Integer> integeroflistofwholetilesthatplayed = new ArrayList<>();
@@ -543,7 +543,7 @@ public class GameBoard {
 
     }
 
-    /*public static Corporation searchCorporations(String adjacentTile){
+    public static Corporation searchCorporations(String adjacentTile){
         if(Tower.searchList(adjacentTile)){
             return Tower;
         }
@@ -567,7 +567,7 @@ public class GameBoard {
         }
         return null;
     }
-*/
+
 
 ///===============================================================================================================================
 

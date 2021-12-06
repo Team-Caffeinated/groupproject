@@ -9,7 +9,7 @@ import static edu.isu.cs2263.acquire.Corporation.*;
 import static org.junit.jupiter.api.Assertions.*;
 public class StockMarketTest {
     //Test for buying stock
-    @Test
+    /*@Test
     public void testBuyStock(){
         Corporation Tower = new Corporation("Tower", 6, "Red");
         Player player1 = new Player("player1", 5000);
@@ -47,6 +47,8 @@ public class StockMarketTest {
 
         assertEquals(600, x);
     }
+*/
+
 
 
 
