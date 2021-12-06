@@ -262,6 +262,8 @@ public class App extends Application {
 
 
         play.setOnAction(e -> {
+            gb.getPlayer1().setName(firstValue.getText());
+            gb.getPlayer2().setName(secondValue.getText());
             makeboard(new Stage());
             myStage.close();
 
@@ -545,9 +547,6 @@ public class App extends Application {
             }
 
             buyselltrade.setOnAction(event1 -> {buyselltradestock1();});
-
-
-
 
         });
 
@@ -2076,7 +2075,6 @@ public class App extends Application {
         list.remove(tile);
         list.add(randtile1);
     }
-
     public void buyselltradestock1(){
         Stage primaryStage=new Stage();
         primaryStage.setTitle("http://java-buddy.blogspot.com/");
@@ -2484,17 +2482,6 @@ public class App extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
-
-
-
-
-
-
-
-
-
-
     public void merg2equal(Integer tilenumber){
         Stage equal_2_corp=new Stage();
         corppick=new Label("Which corporation do you want to pick?");
@@ -2548,8 +2535,6 @@ public class App extends Application {
 
 
     }
-
-
     public void merg3equal(){
         Stage equal_2_corp=new Stage();
         corppick=new Label("Which corporation do you want to pick?");
@@ -2598,7 +2583,6 @@ public class App extends Application {
 
 
     }
-
     public void exit() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
